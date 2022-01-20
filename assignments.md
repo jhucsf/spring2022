@@ -11,7 +11,7 @@ This page lists the programming assignments for the course.
 Some advice about the programming assignments:
 
 * Do not wait until the last minute to start: if we give you two weeks to complete an assignment, it's because we expect that it will take you two weeks (working steadily)
-* Ask questions on [Campuswire](https://campuswire.com) and in office hours
+* Ask questions on [Piazza](https://piazza.com/jhu/spring2022/601229) and in office hours
 * Use good programming practices
 * Test your code thoroughly (plan to spend about as much time testing the code as writing it)
 
