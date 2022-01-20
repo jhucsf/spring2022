@@ -25,11 +25,10 @@ The [Resources](resources.html) page has links to useful resources.
 
 ## Important links
 
-* Campuswire (ask questions here!): <https://campuswire.com/>
+* Piazza (ask questions here!): <https://piazza.com/jhu/spring2022/601229>
 * Gradescope (assignment submission): <https://www.gradescope.com/>
 
-Please email <daveho@cs.jhu.edu> if you need to get access to Campuswire
-and/or Gradescope.
+Please email <daveho@cs.jhu.edu> if you need to get access to Gradescope.
 
 ## News
 
