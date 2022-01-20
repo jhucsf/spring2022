@@ -32,4 +32,5 @@ Please email <daveho@cs.jhu.edu> if you need to get access to Gradescope.
 
 ## News
 
-* **Jan 24** — Welcome back!
+* **Jan 24** — Welcome back! [Assignment 1](assign/assign01.html) is due
+  
