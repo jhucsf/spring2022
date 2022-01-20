@@ -10,6 +10,9 @@ category: "syllabus"
   <b>Spring, 2022 (3 credits, E)</b><br>
 </div>
 
+*Please note that this syllabus could be updated during the semester.*
+Any updates will be mentioned in class and on Piazza.
+
 ## Instructor
 
 [David Hovemeyer](https://www.cs.jhu.edu/~daveho) <mailto:daveho@cs.jhu.edu>
