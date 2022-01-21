@@ -19,7 +19,7 @@ Any updates will be mentioned in class and on Piazza.
 
 Office: Malone 240A
 
-Office hours: TBD, via Zoom (see Piazza for zoom link)
+Office hours: T 12-2pm, Th 1-3pm, via Zoom (see Piazza for zoom link)
 
 ## Course Assistants
 
