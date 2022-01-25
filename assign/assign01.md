@@ -9,6 +9,15 @@ Milestone 2: due Tuesday Feb 8th by 11pm
 
 Assignment type: **Pair**, you may work with one partner
 
+*Update 1/25*: There was a mistake in the `fixedpoint_tests.c` file in the
+original skeleton code. To fix it, add the following line of code to the
+`setup` function (just before the `return objs;` statement at the end of
+the function):
+
+```c
+objs->max = fixedpoint_create2(0xFFFFFFFFFFFFFFFFUL, 0xFFFFFFFFFFFFFFFFUL);
+```
+
 # Overview
 
 In this assignment, you will implement a simple C library for fixed-point arithmetic.

@@ -32,5 +32,7 @@ Please email <daveho@cs.jhu.edu> if you need to get access to Gradescope.
 
 ## News
 
+* **Jan 25** — The description for [Assignment 1](assign/assign01.html) has been
+  updated with a correction for `fixedpoint_tests.c`.
 * **Jan 24** — Welcome back! [Assignment 1](assign/assign01.html) has two
   milestones, due **Tues Feb 1st** and **Tues Feb 8th**.
