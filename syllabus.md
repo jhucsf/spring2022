@@ -25,7 +25,6 @@ Office hours: T 12-2pm, Th 1-3pm, via Zoom (see Piazza for zoom link)
 
 TBD
 
-<!--
 Head CAs:
 
 * Ryan Rubel <mailto:rrubel1@jhu.edu>
@@ -33,15 +32,17 @@ Head CAs:
 
 CAs:
 
-* Adyant Balaji <mailto:abalaji2@jhu.edu>
-* Simone Bliss <mailto:sbliss5@jhu.edu>
 * Jason Kurlander <mailto:jkurlan3@jhu.edu>
 * Susan Liu <mailto:sliu151@jhu.edu>
 * David Skaff <mailto:dskaff1@jhu.edu>
 * Alex Wei <mailto:awei11@jhu.edu>
 * Gary Yang <mailto:yyang117@jhu.edu>
 * Lucy Zhang <mailto:wzhang99@jhu.edu>
--->
+* David Hla <dhla2@jhu.edu>
+* Fangjie Li <fli35@jhu.edu>
+* Jiarui Chen <jchen324@jhu.edu>
+* Lambert Kober <lkober1@jhu.edu>
+* Lisa Hou <qhou4@jhu.edu>
 
 ## Meeting
 
