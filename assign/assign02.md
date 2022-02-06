@@ -17,7 +17,7 @@ up to two milestones as listed below.
 
 Note that your assembly-code *must* strictly adhere to all requirements
 of the x86-64 Linux register use and procedure calling conventions.
-You will receive a deduction for violations of the regsiter use and
+You will receive a deduction for violations of the register use and
 procedure calling conventions, *even if your code passes the
 automated tests.*
 
