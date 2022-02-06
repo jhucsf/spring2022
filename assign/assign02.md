@@ -3,17 +3,9 @@ layout: default
 title: "Assignment 2: Hex dump"
 ---
 
-<!--
-**Part 1 Due:** Tuesday, September 29, 2020 @ 11pm
-
-**Part 2 Due:** Friday, October 9, 2020 @ 11pm
-
-**Collaboration:** Pair
--->
-
 Milestone 1: due Tuesday Feb 22nd by 11pm
 
-Milestone 2: due Tuesday Mar 1st by 11pm
+Milestone 2: due Thursday Mar 3rd by 11pm
 
 Assignment type: **Pair**, you may work with one partner
 
@@ -40,11 +32,21 @@ working with unit tests written. In addition, _at least_ the Assembly
 language functions of `hex_to_printable` and `hex_format_byte_as_hex`
 must be working with unit tests written.
 
+To summarize this milestone, the `c_hexdump` program should be 100% functional, and
+`c_hextests` should pass all of the implemented unit tests. (You will need
+to write your own unit tests so that each of the functions declared
+in `hexfuncs.h` is thoroughly tested.)
+
 ## Milestone 2 requirements
 
 The rest of the Assembly language functions must be written with
 thorough unit tests. Uploads for this submission should include the C
 implementation and unit tests submitted for part 1 as well.
+
+For this milestone, the `asm_hexdump` program should be 100% functional,
+and `asm_hextests` should pass all of the implemented unit tests.
+(You should not need to add any additional unit tests, although you may
+if you wish.)
 
 ## Late Days
 
@@ -220,20 +222,27 @@ Note that it will not be straightforward to write unit tests for the
 you are not required to write unit tests for them.
 
 **Important advice**: Writing complete programs in
-assembly language is hard.  Using unit tests, you can adopt a
+assembly language is challenging.  Using unit tests, you can adopt a
 test-driven approach where you implement one assembly language
-function at a time, and test them to ensure correct operation.
-*Using this approach will make developing the `hex` program vastly
-easier.*
+function at a time, and test each one to ensure correct operation.
+Using this approach will make developing the `asm_hexdump` program vastly
+easier.
 
 ## Program-level testing
 
 In addition to unit testing individual functions, you should test the
 program as a whole. In general, for any input file (text, binary, etc.),
-the command
+the commands
 
 ```
-./hex < inputfile
+./c_hexdump < inputfile
+```
+
+and
+
+
+```
+./asm_hexdump < inputfile
 ```
 
 should produce exactly the same output as
@@ -276,45 +285,24 @@ should have a comment or two. In particular you **must** describe where
 you get what data from, especially when it comes to functions and their
 parameters/results. **You have been warned\!**
 
+# Extra-credit option
+
+For a *tiny* amount of extra credit on Milestone 2 (at most 1 point!),
+invoke the `read` and `write` system calls from your assembly code using
+the `syscall` instruction rather than calling the `read` and `write`
+wrapper functions in the C library.
+
+**Do not attempt this extra-credit option until your assembly-language
+code is 100% tested and working.**
+
+You will need to research how the system call mechanism works in x86-64
+Linux. It's *fairly* similar to making a function call, but there are some
+subtle differences.
+
+If you implement the extra credit, make sure that you mention it
+in the `README.txt` document for your submission.
+
 # Hints and tips
-
-<!--
-## Assembly resources
-
-Keep in mind that the assembly language functions *must* fully conform to
-the x86-64 calling conventions; otherwise, interoperability with C code
-won't work. If you're lost and/or unsure where to start, here's a list of
-different resources that can be a good starting point for you to look at:
-
-- If you find yourself wondering how to use a system call, you can use
-  the man command to look up information. For example, to find out how the
-  read system call works, use `man 2 read`. Sadly the man pages don’t
-  describe the details required to call
-  system calls from assembly language, but [this
-  post](http://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/)
-  has everything you’ll need regarding **register conventions and
-  system call numbers**.
-- [This site](http://www.cs.uwm.edu/classes/cs315/Bacon/Lecture/HTML/ch05s03.html)
-  gives a very basic overview of **register conventions**. It's specifically
-  for 32-bit registers, but it's helpful to read over and understand how
-  everything works in relation to each other.
-- [This site](https://minnie.tuhs.org/CompArch/Resources/mips_quick_tutorial.html)
-  has even more on 32-bit register convention. It also talks about
-  general code structure for assembly with sections on **data declarations,
-  load/store instructions, indirect and based addressing, basic arithmetic,
-  control structures** (it is really helpful to have a good understanding
-  of this), and **I/O functions**.
-- For a comprehensive overview of **functions and syntax**, look at [this
-  site](http://www.mrc.uidaho.edu/mrc/people/jff/digital/MIPSir.html). It
-  goes over the descriptions of different functions as well as proper
-  syntax.
-- [This site](http://people.cs.pitt.edu/~xujie/cs447/Mips/sub.html)
-  goes more in depth on **subroutines/functions**.
-- Another compreensive x86_64 assembly command list is [here](https://www.felixcloutier.com/x86/)
-- Brown has two cheat sheets that could be useful too -
-  [x86_64](https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf)
-  & [gdb](https://cs.brown.edu/courses/cs033/docs/guides/gdb.pdf)
--->
 
 ## x86-64 tips and tricks
 
@@ -341,17 +329,6 @@ movq $sHexDigits, %r10
 ```
 
 would put the address that `sHexDigits` refers to in `%r10`.
-
-<!--
-If you want to load or store the *data* in a variable named by a
-label, then do *not* prefix it with `$`.  For example, if you want
-to load the value of the (64 bit) variable `bCount` into `%rdi`,
-use the instruction
-
-```
-movq bCount, %rdi
-```
--->
 
 When calling a function, the stack pointer (`%rsp`) must contain an address
 which is a multiple of 16.  However, because the `callq` instruction
@@ -390,12 +367,6 @@ yourself about calling conventions:
 
 In Unix and Linux, standard input is file descriptor 0.
 
-<!--
-Linux system calls do *not* preserve `%rcx` or `%r11`, so make sure you
-save them on the stack if their contents need to be preserved across a
-system call.
--->
-
 The GNU assembler allows you to define "local" labels, which start
 with the prefix `.L`.  You should use these for control flow targets
 within a function.  For example (from the [echoInput.S](hw2/echoInput.S)
@@ -416,17 +387,6 @@ example program):
 printable ASCII characters is 32 through 126, inclusive.  Any byte value
 that is not in this range should be printed as "`.`" (period).  Note
 that "`.`" has ASCII value 46.
-
-<!--
-## Example assembly language programs
-
-For reference, here are links to a couple of example assembly language
-programs which use the `read` and `write` system calls.
-
-* [hello.S](hw2/hello.S): prints a `Hello, world` message
-* [echoInput.S](hw2/echoInput.S): reads up to 128 bytes of data from
-  standard input and echoes it to standard output
--->
 
 ## Example assembly language functions
 
@@ -479,9 +439,14 @@ ASSERT(8L == strLen("00000010"));
 ```
 
 ## Assignment tips
-For this assignment, you should start by writing the C language implementations first. Be sure to write unit tests and check your work along the way.
 
-After writing your C functions, start thinking about how you can translate your implementation into assembly. Be sure to consider register usage and be aware of pushing/popping the stack.
+For this assignment, you should start by writing the C language
+implementations first. Be sure to write unit tests and check your work
+along the way.
+
+After writing your C functions, start thinking about how you can translate
+your implementation into assembly. Be sure to consider register usage
+and be aware of pushing/popping the stack.
 
 # Submitting
 
