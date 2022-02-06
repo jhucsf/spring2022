@@ -33,3 +33,4 @@ Please read the [style guidelines](assign/style.html) so that you know what our 
 Assignment | Type | Due
 ---------- | :--: | ---
 [Assignment 1: Fixed-point arithmetic](assign/assign01.html) | Pair | MS1 due Tues, Feb 1<br>MS2 due Tues, Feb 8
+[Assignment 2: Hex dump](assign/assign02.html) | Pair | MS1 due TBD<br>MS2 due TBD
