@@ -29,17 +29,17 @@ Jan 28 | Integer representation: [slides](lectures/lecture03-public.pdf) | 2.2 |
 Jan 31 | Integer arithmetic: [slides](lectures/lecture04-public.pdf) | 2.3 | A1 MS1 due Tues 2/1
 Feb 2 | Floating point: [slides](lectures/lecture05-public.pdf) | 2.4 | 
 Feb 4 | Machine-level program representation: [slides](lectures/lecture06-public.pdf) | 3.1–3.4 | 
-Feb 7 | ALU operations, arithmetic: [slides](lectures/lecture07-public.pdf), [alu.zip (example code)](lectures/alu.zip) | 3.5 | 
+Feb 7 | ALU operations, arithmetic: [slides](lectures/lecture07-public.pdf), [alu.zip (example code)](lectures/alu.zip) | 3.5 | A1 MS2 due Tues 2/8
 Feb 9 | Control flow: [slides](lectures/lecture08-public.pdf), [control.zip (example code)](lectures/control.zip) | 3.6 | 
 Feb 11 | Procedures, stacks: [slides](lectures/lecture09-public.pdf), [control2.zip (example code)](lectures/control2.zip) | 3.7 | 
 Feb 14 | Arrays and structs: [slides](lectures/lecture10-public.pdf), [arraystruct.zip (example code)](lectures/arraystruct.zip) | 3.8–3.9 | 
 Feb 16 | Assembly language in class exercise |  | 
 Feb 18 | Code and data interactions, buffer overflows: [slides](lectures/lecture11-public.pdf), [buf.zip (example code)](lectures/buf.zip) | 3.10 | 
-Feb 21 | Program optimization (basic techniques): see Piazza for slides | 5.1–5.8 | 
+Feb 21 | Program optimization (basic techniques): see Piazza for slides | 5.1–5.8 | A2 MS1 due Tues 2/22
 Feb 23 | Exam 1 review session |  | 
 Feb 25 | **Exam 1** (in class) |  | 
 Feb 28 | Pipelines: [slides](lectures/lecture13-public.pdf) | Patterson&amp;Hennessy 4.5–4.7 | 
-Mar 2 | Program optimization (ILP, memory, profiling): see Piazza for slides | 5.9–5.14 | 
+Mar 2 | Program optimization (ILP, memory, profiling): see Piazza for slides | 5.9–5.14 | A2 MS2 due Thurs 3/3
 Mar 4 | Memory hierarchy: [slides](lectures/lecture15-public.pdf) | 6.1–6.3 | 
 Mar 7 | Cache policies: [slides](lectures/lecture16-public.pdf) | 6.4 | 
 Mar 9 | Caches and program execution: see Piazza for slides | 6.5 | 
