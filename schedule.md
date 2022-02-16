@@ -33,7 +33,7 @@ Feb 7 | ALU operations, arithmetic: [slides](lectures/lecture07-public.pdf), [al
 Feb 9 | Control flow: [slides](lectures/lecture08-public.pdf), [control.zip (example code)](lectures/control.zip) | 3.6 | 
 Feb 11 | Procedures, stacks: [slides](lectures/lecture09-public.pdf), [control2.zip (example code)](lectures/control2.zip) | 3.7 | 
 Feb 14 | Arrays and structs: [slides](lectures/lecture10-public.pdf), [arraystruct.zip (example code)](lectures/arraystruct.zip) | 3.8–3.9 | 
-Feb 16 | Assembly language in class exercise: [slides](lectures/assembly-public.pdf) |  | 
+Feb 16 | Assembly language in class exercise: [slides](lectures/assembly-public.pdf), [asm_exercise.zip (example code)](lectures/asm_exercise.zip) |  | 
 Feb 18 | Code and data interactions, buffer overflows: [slides](lectures/lecture11-public.pdf), [buf.zip (example code)](lectures/buf.zip) | 3.10 | 
 Feb 21 | Program optimization (basic techniques): see Piazza for slides | 5.1–5.8 | A2 MS1 due Tues 2/22
 Feb 23 | Exam 1 review session |  | 
