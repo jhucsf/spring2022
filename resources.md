@@ -12,17 +12,13 @@ This section has links to some information resources you might find useful.
 
 ## Practice problems and exams
 
-Coming soon!
-
-<!--
 Review materials for Exam 1:
 
 * [Exam 1 practice questions](resources/exam1review.html), [Solutions](resources/exam1review-solutions.html)
 * [Midterm, Spring 2020](resources/midterm-spring2020.pdf) (Questions 1–3), [Solution](resources/midterm-spring2020-soln.pdf)
-* [Assembly language mini-exercises](resources/assemblyMini.html)
-* [Assembly language exercise](resources/assembly.html), [solution](resources/asmExerciseSoln.zip)
-* [Assembly language exercise 2 (more challenging)](resources/assembly2.html)
+* [Exam 1, Fall 2021](resources/exam01-fall2021.pdf), [Solution](resources/exam01-fall2021-soln.pdf)
 
+<!--
 Review materials for Exam 2:
 
 * [Exam 2 practice questions](resources/exam2review.html), [Solutions](resources/exam2review-solutions.html)
@@ -47,6 +43,12 @@ Review materials for Exam 3:
 * [Exam 4 practice questions](resources/exam4review.html), [Answers](resources/exam4review-solutions.html)
 * [Exam 4, Fall 2020](resources/exam04-fall2020.pdf), [Solution](resources/exam04-fall2020-solution.pdf)
 -->
+
+## x86-64 assembly language exercises
+
+* [Assembly language mini-exercises](resources/assemblyMini.html)
+* [Assembly language exercise](resources/assembly.html), [solution](resources/asmExerciseSoln.zip)
+* [Assembly language exercise 2 (more challenging)](resources/assembly2.html)
 
 ## x86-64 assembly programming resources
 

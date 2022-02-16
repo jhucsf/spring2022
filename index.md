@@ -32,6 +32,10 @@ Please email <daveho@cs.jhu.edu> if you need to get access to Gradescope.
 
 ## News
 
+* **Feb 16** — Exam 1 review materials and assembly language practice exercises
+  have been posted to the [Resources](resources.html) page.
+  Exam 1 takes place in class on Friday, Feb 25th, and is closed book
+  and closed notes.
 * **Feb 10** — [Assignment 2](assign/assign02.html) has been updated to
   correct a mistake in the comment for the `hex_format_offset` function.
 * **Feb 6** — [Assignment 2](assign/assign02.html) has been posted. There are
