@@ -31,7 +31,7 @@ In all questions, assume signed integers use two's complement representation.
       <br><br>
     From <code>1 * 6^2 + 1 * 6^1 + 1 * 6^0</code>:
       <br>
-    <code>43<sub>10</sub> = 111<sub>8</sub></code>
+    <code>43<sub>10</sub> = 111<sub>6</sub></code>
       <br><br>
     From <code>1 * 2^5 + 1 * 2^3 + 1 * 2^1 + 1 * 2^0</code>:
       <br>
@@ -53,11 +53,11 @@ In all questions, assume signed integers use two's complement representation.
 
     <i>Write what <code>-5</code> would be on a 4-bit and an 8-bit system.</i>
       <br><br>
-    4-bit system: <code>5<sub>10</sub> = 1011<sub>2</sub></code>
+    4-bit system: <code>-5<sub>10</sub> = 1011<sub>2</sub></code>
       <br>
     <code>-5<sub>10</sub> = -8<sub>10</sub> + 3<sub>10</sub> = 1000<sub>2</sub> + 0011<sub>2</sub></code>
       <br>
-    8-bit system: <code>5<sub>10</sub> = 1011</code>
+    8-bit system: <code>-5<sub>10</sub> = 11111011<sub>2</sub></code>
       <br>
     <code>-5<sub>10</sub> = -128<sub>10</sub> + 123<sub>10</sub> = 10000000<sub>2</sub> + 01111011<sub>2</sub></code>
       <br><br>
