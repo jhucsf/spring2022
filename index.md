@@ -32,6 +32,9 @@ Please email <daveho@cs.jhu.edu> if you need to get access to Gradescope.
 
 ## News
 
+* **Feb 18** — Fixed (or mostly-fixed) versions of the code from the in-class
+  assembly language exercise are available on the [Resources](resources.html)
+  page.
 * **Feb 16** — Exam 1 review materials and assembly language practice exercises
   have been posted to the [Resources](resources.html) page.
   Exam 1 takes place in class on Friday, Feb 25th, and is closed book

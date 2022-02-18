@@ -49,6 +49,10 @@ Review materials for Exam 3:
 * [Assembly language mini-exercises](resources/assemblyMini.html)
 * [Assembly language exercise](resources/assembly.html), [solution](resources/asmExerciseSoln.zip)
 * [Assembly language exercise 2 (more challenging)](resources/assembly2.html)
+* Fixed version of code for in-class assembly exercise, section 1:
+  [asm\_exercise\_sec01.zip](resources/asm_exercise_sec01.zip)
+* Fixed (mostly) version of code for in-class assembly exercise, section 2:
+  [asm\_exercise\_sec02.zip](resources/asm_exercise_sec02.zip)
 
 ## x86-64 assembly programming resources
 
