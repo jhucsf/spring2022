@@ -66,8 +66,75 @@ In all questions, assume signed integers use two's complement representation.
 
     <i>Show how to calculate <code>1.250 + 3.375</code> and <code>1.250 * 3.375</code> using floating point.</i>
       <br>
-    TODO
-      <br><br>
+
+    <p>Assume 32-bit single precision IEEE 754 floating point values</p>
+
+    <p>1.250<sub>10</sub> = 1.01<sub>2</sub> = 1.01<sub>2</sub> × 2<sup>0</sup></p>
+    <p>3.375<sub>10</sub> = 11.011<sub>2</sub> = 11.011<sub>2</sub> × 2<sup>0</sup> = 1.1011<sub>2</sub> × 2<sup>1</sup></p>
+
+    <p><b>Addition:</b></p>
+
+    <p>Convert the smaller operand to the exponent of the larger operand</p>
+
+    <p>1.250<sub>10</sub> = 1.01<sub>2</sub> = 1.01<sub>2</sub> × 2<sup>0</sup> = 0.101<sub>2</sub> × 2<sup>1</sup></p>
+
+    <p>Add:</p>
+
+    <p>0.101<sub>2</sub> × 2<sup>1</sup> + 1.1011<sub>2</sub> × 2<sup>1</sup> = 10.0101<sub>2</sub> × 2<sup>1</sup></p>
+
+    <p>Normalize:</p>
+
+    <p>10.0101<sub>2</sub> × 2<sup>1</sup> = 1.00101<sub>2</sub> × 2<sup>2</sup></p>
+
+    <p>Encoded as IEEE 754 single precision (recall bias is 127, so exponent of 2 is
+       encoded as 2 + 127 = 129):</p>
+
+    <table>
+      <tr><th>Sign</th><th>Exponent</th><th>Fraction</th></tr>
+      <tr>
+        <td>0</td>
+        <td>10000001</td>
+        <td>00101000000000000000000</td>
+      </tr>
+    </table>
+
+    <p><b>Multiplication:</b></p>
+
+    <p>Product is:</p>
+
+    <p>(1.01<sub>2</sub> × 2<sup>0</sup>) × (1.1011<sub>2</sub> × 2<sup>1</sup>)</p>
+
+    <p>Rewritten:</p>
+
+    <p>(1.01<sub>2</sub> × 1.1011<sub>2</sub>) × (2<sup>0</sup> × 2<sup>1</sup>)</p>
+
+    <p>Multiply mantissas:</p>
+
+    <p>1.01<sub>2</sub> × 1.1011<sub>2</sub> = 10.000111<sub>2</sub></p>
+
+    <p>Multiply bases/exponents:</p>
+
+    <p>2<sup>0</sup> × 2<sup>1</sup> = 2<sup>1</sup></p>
+
+    <p>Product is:</p>
+
+    <p>10.000111<sub>2</sub> × 2<sup>2</sup></p>
+
+    <p>Normalize:</p>
+
+    <p>10.000111<sub>2</sub> × 2<sup>2</sup> = 1.0000111<sub>2</sub> × 2<sup>3</sup></p>
+
+    <p>Encoded as IEEE 754 single precision (bias is 127, so exponent of 3 is
+       encoded as 3 + 127 = 130):</p>
+
+    <table>
+      <tr><th>Sign</th><th>Exponent</th><th>Fraction</th></tr>
+      <tr>
+        <td>0</td>
+        <td>10000010</td>
+        <td>00001110000000000000000</td>
+      </tr>
+    </table>
   </li>
   <li>
 
