@@ -118,11 +118,11 @@ In all questions, assume signed integers use two's complement representation.
 
     <p>Product is:</p>
 
-    <p>10.000111<sub>2</sub> × 2<sup>2</sup></p>
+    <p>10.000111<sub>2</sub> × 2<sup>1</sup></p>
 
     <p>Normalize:</p>
 
-    <p>10.000111<sub>2</sub> × 2<sup>2</sup> = 1.0000111<sub>2</sub> × 2<sup>3</sup></p>
+    <p>10.000111<sub>2</sub> × 2<sup>1</sup> = 1.0000111<sub>2</sub> × 2<sup>2</sup></p>
 
     <p>Encoded as IEEE 754 single precision (bias is 127, so exponent of 3 is
        encoded as 3 + 127 = 130):</p>
