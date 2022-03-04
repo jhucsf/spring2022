@@ -42,25 +42,25 @@ Feb 28 | Pipelines: [slides](lectures/lecture13-public.pdf) | Patterson&amp;Henn
 Mar 2 | Program optimization (ILP, memory, profiling): see Piazza for slides | 5.9–5.14 | A2 MS2 due Thurs 3/3
 Mar 4 | Memory hierarchy: [slides](lectures/lecture15-public.pdf) | 6.1–6.3 | 
 Mar 7 | Cache policies: [slides](lectures/lecture16-public.pdf) | 6.4 | 
-Mar 9 | Caches and program execution: see Piazza for slides | 6.5 | 
+Mar 9 | Caches and program execution: see Piazza for slides | 6.5 | A3 MS1 due
 Mar 11 | Linking basics, symbols, relocations, executables, loading: [slides](lectures/lecture18-public.pdf) | 7.1–7.9 | 
 Mar 14 | Dynamic linking, shared libraries, PIC, interpositioning: [slides](lectures/lecture19-public.pdf), [dynload.zip (example code)](lectures/dynload.zip) | 7.10–7.15 | 
 Mar 16 | Exceptions, Processes: [slides](lectures/lecture20-public.pdf) | 8.1–8.4, 8.7 | 
-Mar 18 | Signals: [slides](lectures/lecture21-public.pdf), [signals.zip (example code)](lectures/signals.zip) | 8.5–8.6 | 
+Mar 18 | Signals: [slides](lectures/lecture21-public.pdf), [signals.zip (example code)](lectures/signals.zip) | 8.5–8.6 | A3 MS2 due
 Mar 21–Mar 25 | *Spring break, no classes* |  | 
 Mar 28 | Virtual memory: [slides](lectures/lecture22-public.pdf) | 9.1–9.3 | 
-Mar 30 | Memory management, address translation: [slides](lectures/lecture23-public.pdf) | 9.4–9.7 | 
+Mar 30 | Memory management, address translation: [slides](lectures/lecture23-public.pdf) | 9.4–9.7 | A3 MS3 due Thurs 3/31
 Apr 1 | Memory mapping, dynamic memory allocation: [slides](lectures/lecture24-public.pdf) | 9.8, 9.9, 9.11 | 
 Apr 4 | Exam 2 review session |  | 
 Apr 6 | **Exam 2** (in class) |  | 
 Apr 8 | Unix I/O, files: [slides](lectures/lecture25-public.pdf) | 10.1–10.11 | 
-Apr 11 | Networks, Internet Protocol: [slides](lectures/lecture26-public.pdf) | 11.1–11.3 | 
+Apr 11 | Networks, Internet Protocol: [slides](lectures/lecture26-public.pdf) | 11.1–11.3 | <span class='tentative'>A4 due</span>
 Apr 13 | Sockets, Application Protocols: [slides](lectures/lecture27-public.pdf), [sockets.zip (example code)](lectures/sockets.zip) | 11.4 | 
 Apr 15 | Network applications, HTTP: [slides](lectures/lecture28-public.pdf), [webserver.zip (example code)](lectures/webserver.zip) | 11.4–11.6 | 
 Apr 18 | Concurrency with processes: [slides](lectures/lecture29-public.pdf), [mp_webserver.zip (example code)](lectures/mp_webserver.zip) | 12.1 | 
-Apr 20 | Concurrency with threads: [slides](lectures/lecture30-public.pdf), [mt_webserver.zip (example code)](lectures/mt_webserver.zip) | 12.3 | 
+Apr 20 | Concurrency with threads: [slides](lectures/lecture30-public.pdf), [mt_webserver.zip (example code)](lectures/mt_webserver.zip) | 12.3 | <span class='tentative'>A5 due</span>
 Apr 22 | Thread synchronization: [slides](lectures/lecture31-public.pdf), [synch.zip (example code)](lectures/synch.zip) | 12.4–12.5 | 
 Apr 25 | Concurrency with I/O multiplexing: [slides](lectures/lecture32-public.pdf), [iomux.zip (example code)](lectures/iomux.zip) | 12.2 | 
 Apr 27 | Parallelism, concurrency issues: [slides](lectures/lecture33-public.pdf), [synch2.zip (example code)](lectures/synch2.zip) | 12.6–12.7 | 
-Apr 29 | Exam 3 review session |  | 
-TBD | **Exam 3** |  | 
+Apr 29 | Exam 3 review session |  | <span class='tentative'>A6 due</span>
+May 10 | **Exam 3** (2pm-5pm, location TBD) |  | 
