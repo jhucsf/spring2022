@@ -32,6 +32,8 @@ Please email <daveho@cs.jhu.edu> if you need to get access to Gradescope.
 
 ## News
 
+* **Mar 8** — The due date for Milestone 1 of [Assignment 3](assign/assign03.html)
+  has been moved to **Thurs, Mar 10** by 11pm.
 * **Mar 4** — [Assignment 3](assign/assign03.html) has been posted.
   There are three milestones, due **Wed, Mar 9**, **Fri, Mar 18**,
   and **Thurs, Mar 31**, respectively.

@@ -5,7 +5,7 @@ title: "Assignment 3: Cache simulator"
 
 **Due**:
 
-* Milestone 1: Wednesday, Mar 9th (no late hours)
+* Milestone 1: <strike>Wednesday, Mar 9th</strike> Thursday, Mar 10th (no late hours)
 
 * Milestone 2: Friday, Mar 18th by 11pm (max 48 late hours)
 
