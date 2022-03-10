@@ -14,7 +14,7 @@ title: "Assignment 3: Cache simulator"
 Assignment type: **Pair**, you may work with one partner
 
 **Late hour usage**: If you anticipate using more than 48 late hours
-on Milestone 3, please post privately (to instructors and TAs) on Campuswire
+on Milestone 3, please post privately (to instructors and TAs) on Piazza
 to request permission. Note that late hours may *not* be used on
 Milestone 1, and at most 2 late hours may be used on Milestone 2.
 
@@ -258,7 +258,7 @@ simulator specification, your `Total cycles` value could be slightly different,
 but should be fairly close.  For all of the other counts, your simulator's
 output should exactly match the output above.
 
-We **strongly** encourage you to use Campuswire to post traces and simulator results,
+We **strongly** encourage you to use Piazza to post traces and simulator results,
 so that you can compare your results with other students' results.
 
 ### Reporting invalid cache parameters
