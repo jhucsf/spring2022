@@ -16,7 +16,7 @@ Assignment type: **Pair**, you may work with one partner
 **Late hour usage**: If you anticipate using more than 48 late hours
 on Milestone 3, please post privately (to instructors and TAs) on Piazza
 to request permission. Note that late hours may *not* be used on
-Milestone 1, and at most 2 late hours may be used on Milestone 2.
+Milestone 1, and at most 48 late hours may be used on Milestone 2.
 
 # Cache simulator
 
