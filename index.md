@@ -32,6 +32,9 @@ Please email <daveho@cs.jhu.edu> if you need to get access to Gradescope.
 
 ## News
 
+* **Mar 28** — Exam 2 takes place in class on **Wed, Apr 6th**.
+  Review materials are posted on the [Resources](resources.html) page.
+  We will have a review session in class on Mod, Apr 4th (bring questions!)
 * **Mar 8** — The due date for Milestone 1 of [Assignment 3](assign/assign03.html)
   has been moved to **Thurs, Mar 10** by 11pm.
 * **Mar 4** — [Assignment 3](assign/assign03.html) has been posted.
