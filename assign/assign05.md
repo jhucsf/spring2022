@@ -115,7 +115,6 @@ sendall | client | message\_text | send a message to all users in room
 senduser | client | recipient:message\_text | send message to specified recipient. If the recipient does not exist, the request silently fails and the server still returns `ok`.
 quit | client | [ignored] | client is done, server will close the connection.
 
-
 You may have the following assumptions about the usernames we test your programs
 on:
 
@@ -126,10 +125,10 @@ on:
 
 For the first part of this assignment, you will be responsible for implementing
 the _receiver_ and the _sender_ to communicate with a server binary included in
-the starter code.
+the starter code. Note that the following messages are considered unused and do
+not need to be handled by any client:
 
-**Note:** This binary has been compiled to run on the ugrad cluster and linux
-systems. It **will not** run on a Mac.
+* `senduser`
 
 ### Receiver
 
@@ -184,7 +183,6 @@ The following messages must be handled:
 * `rlogin`
 * `join`
 * `sendall`
-* `senduser`
 * `leave`
 * `ok`
 * `err`
@@ -196,8 +194,6 @@ commands. Commands start with the `/` character and may be one of the following:
     message
 * `/leave` - leaves the current room, stopping all message delivery using a
     `leave` message.
-* `/senduser [username] [message text]` - sends the specified user `[username]` a
-    chat using a `senduser` message.
 * `/quit` - Instructs the server to disconnect the current send client using a
     `quit` message.
 * All other commands should be rejected with an error message printed to
