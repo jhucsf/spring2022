@@ -3,7 +3,7 @@ layout: default
 title: "Assignment 4: Analyzing ELF files"
 ---
 
-**Due**: Monday, Apr 11th by 11:00 pm
+**Due**: <strike>Monday, Apr 11th</strike> Tuesday, Apr 12th by 11:00 pm
 
 Assignment type: **Pair**, you may work with one partner
 

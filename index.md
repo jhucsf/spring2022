@@ -32,6 +32,8 @@ Please email <daveho@cs.jhu.edu> if you need to get access to Gradescope.
 
 ## News
 
+* **Apr 11** — The due date for [Assignment 4](assign/assign04.html) has
+  been changed to **Tuesday, Apr 12th**.
 * **Apr 1** — [Assignment 4](assign/assign04.html) is due **Monday, Apr 11th**
   by 11pm.
 * **Mar 28** — Exam 2 takes place in class on **Wed, Apr 6th**.
