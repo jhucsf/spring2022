@@ -85,15 +85,15 @@ The following message types are defined:
 
 Tag | Sender | Payload content/format | Description 
 ----|--------|------------------------|-------------
-err | server | message_text | client's request was not carried out.
-ok | server | message_text | client's request ran to completion.
-delivery | server | room:sender:message_text | a delivery of a received message to a receiver.
+err | server | message\_text | client's request was not carried out.
+ok | server | message\_text | client's request ran to completion.
+delivery | server | room:sender:message\_text | a delivery of a received message to a receiver.
 empty | server | [ignored] | Server is indicating that no new messages are available for the given client.
 slogin | client | username | log in as sender.
 rlogin | client | username | log in as receiver.
 join | client | room_name | client wants to join specified room (which will be created as necessary). Client leaves the current room if applicable.
-sendall | client | message_text | send a message to all users in room
-senduser | client | recipient:message_text | send message to specified recipient. If the recipient does not exist, the request silently fails and the server still returns `ok`.
+sendall | client | message\_text | send a message to all users in room
+senduser | client | recipient:message\_text | send message to specified recipient. If the recipient does not exist, the request silently fails and the server still returns `ok`.
 quit | client | [ignored] | client is done, server will close the connection.
 
 
@@ -158,9 +158,11 @@ The sender must send the `slogin` message as its first message to the server.
 The following communication flow has been provided for your reference (note that
 this only covers the "happy case"):
 
-![Sender communication flow diagram](assign05/a5_sender_flow.png)
+![Sender communication flow diagram](assign05/a5_sender_flow_edit.png)
 
+<!--
 Please disregard the transactions in the "E.C." box for this assignment.
+-->
 
 The following messages must be handled:
 
