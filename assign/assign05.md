@@ -3,7 +3,18 @@ layout: default
 title: "Assignment 5: Chat Server"
 ---
 
-**Due:** Someday, Apr 00th by 11:00pm
+<div style="text-align: center; font-size: 120%;">
+<i>Note: preliminary assignment description, not official yet!</i>
+</div>
+
+*Note*: Assignment 5 is a double assignment. Each milestone (MS1 and MS2)
+is worth 1/6 of the assignments grade for the course, equal to
+(individually) Assignments 1–4.
+
+**Due:**
+
+* Milestone 1 due **Wednesday, Apr 20th** by 11pm
+* Milestone 2 due **Friday, Apr 29th** by 11pm
 
 # Overview
 
@@ -11,14 +22,22 @@ In this assignment, you will develop a chat client program that communicates
 synchronously with a server in real-time. You may think of this as an
 implementation inspired by classical chat systems such as IRC.
 
-You can get started by downloading <scaffolding>.
+You can get started by downloading \<TODO: scaffolding\>.
 
 **Note:** We highly recommend that you use C++ for this assignment. The server is
-easier to write with abstractions such as scoped locks and classes.
+easier to write with abstractions such as scoped locks and classes. It is also
+very useful to use C++ classes to represent important objects in the client
+and server implementations, such as `Connection` and `Message`.
+The provided skeleton code includes partially implemented classes which
+we encourage you to use as the basis for your client and server implementations.
 
 ## Grading Criteria
 
-[fill me in]
+* Implementation of sender client: 25%
+* Implementation of receiver client 25%
+* Implementation of server: 25%
+* Report explaining thread synchronization in server: 15%
+* Design and coding style: 10%
 
 ## Goals of the assignment
 
@@ -279,3 +298,21 @@ Do not valgrind `netcat` as that will not be testing your program, and may
 generate false positives. Instead you should only valgrind the client excutables
 that you write.
 
+## Part 2: The server
+
+*Coming soon!*
+
+## Submitting
+
+You can use the `solution.zip` target in the provided `Makefile` to create a zipfile
+you can submit to Gradescope:
+
+```
+make solution.zip
+```
+
+Upload your `solution.zip` as **Assignment 5 MS1** or **Assignment 5 MS2**,
+depending on which milestone you are submitting.
+
+Make sure your Milestone 2 submission includes your `README.txt` describing
+your approach to thread synchronization in the server.
