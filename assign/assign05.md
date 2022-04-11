@@ -177,11 +177,7 @@ The sender must send the `slogin` message as its first message to the server.
 The following communication flow has been provided for your reference (note that
 this only covers the "happy case"):
 
-![Sender communication flow diagram](assign05/a5_sender_flow_edit.png)
-
-<!--
-Please disregard the transactions in the "E.C." box for this assignment.
--->
+![Sender communication flow diagram](assign05/a5_sender_flow.png)
 
 The following messages must be handled:
 
