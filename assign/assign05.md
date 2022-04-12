@@ -33,11 +33,17 @@ we encourage you to use as the basis for your client and server implementations.
 
 ## Grading Criteria
 
+Milestone 1:
+
 * Implementation of sender client: 25%
 * Implementation of receiver client 25%
+* Design and coding style: 5%
+
+Milesone 2:
+
 * Implementation of server: 25%
 * Report explaining thread synchronization in server: 15%
-* Design and coding style: 10%
+* Design and coding style: 5%
 
 ## Goals of the assignment
 
@@ -110,18 +116,21 @@ delivery | server | room:sender:message\_text | a delivery of a received message
 empty | server | [ignored] | Server is indicating that no new messages are available for the given client.
 slogin | client | username | log in as sender.
 rlogin | client | username | log in as receiver.
-join | client | room_name | client wants to join specified room (which will be created as necessary). Client leaves the current room if applicable.
+join | client | room\_name | client wants to join specified room (which will be created as necessary). Client leaves the current room if applicable.
 sendall | client | message\_text | send a message to all users in room
 senduser | client | recipient:message\_text | send message to specified recipient. If the recipient does not exist, the request silently fails and the server still returns `ok`.
 quit | client | [ignored] | client is done, server will close the connection.
 
-You may have the following assumptions about the usernames we test your programs
-on:
+You may have the following assumptions about the usernames and room
+names we test your programs on:
 
-* They will be a sequence of valid ascii-encoded text.
-* They will not contain spaces.
+* They will be at least one character in length
+* They will contain only letters (`a`-`z` or `A`-`Z`) or digits (`0`-`9`)
 
-## Part 1: The clients
+The reference server implementation will reject operations in which the username
+and/or room name do not meet these criteria.
+
+## Milestone 1: The clients
 
 For the first part of this assignment, you will be responsible for implementing
 the _receiver_ and the _sender_ to communicate with a server binary included in
@@ -159,7 +168,7 @@ The following messages must be handled:
 * `err`
 
 If the server returns `err` for either the `rlogin` or `join` message, the
-receiver must print the payload to `stderr` and exit with a
+receiver must print the payload to `stderr`/`cerr` and exit with a
 non-zero exit code. The receiver does not need to exit cleanly, we expect it to
 terminate it by sending it a `SIGINT` (a.k.a. `<ctrl>+c`).
 
@@ -176,7 +185,7 @@ The sender must send the `slogin` message as its first message to the server.
 The following communication flow has been provided for your reference (note that
 this only covers the "happy case"):
 
-![Sender communication flow diagram](assign05/a5_sender_flow.png)
+![Sender communication flow diagram](assign05/a5_sender_flow_edit.png)
 
 The following messages must be handled:
 
@@ -197,7 +206,7 @@ commands. Commands start with the `/` character and may be one of the following:
 * `/quit` - Instructs the server to disconnect the current send client using a
     `quit` message.
 * All other commands should be rejected with an error message printed to
-    `stderr`
+    `stderr`/`cerr`
 
 You may assume that all command arguments are valid if the command matches a
 recognized command.
@@ -205,9 +214,9 @@ recognized command.
 The client must listen for a response from the server after sending each message
 (synchronous protocol). It is okay to stop reading user input during this time.
 If the server returns `err` for the `slogin` request, the sender should print
-the payload to `stderr` and exit with a non-zero exit code. If the
+the payload to `stderr`/`cerr` and exit with a non-zero exit code. If the
 server returns `err` for any other request, the sender should print the payload
-to `stderr` and continue processing user input.
+to `stderr`/`cerr` and continue processing user input.
 
 If the `quit` commend is issued, the sender must wait for a reply from the
 server before exiting with exit code 0.
@@ -218,7 +227,7 @@ The following diagram summarizes how errors should be handled:
 
 ![Error communication flow diagram](assign05/a5_error_flow.png)
 
-Each error message must be exactly one line of text printed to `stderr`. The
+Each error message must be exactly one line of text printed to `stderr`/`cerr`. The
 error text printed must be exactly the payload returned from the server in the
 `err` message for server-side error. You may assume that this payload will
 always be correctly formatted. For client-side errors, you may choose any error
@@ -246,14 +255,15 @@ function.
 ### Testing
 
 To aid your testing your program, we have provided a sample server implementation as a
-Linux binary in the starter code. We have intentionally compiled it without
+Linux binary in the starter code (see the [Reference implementation](#reference-implementation)
+section below.) We have intentionally compiled it without
 debugging information and stripped it of any symbols. If your clients are
 implemented correctly, you should be able to type in a message and see the
 message appear on all read clients in the same chat-room. You may run our
 server binary using the following command:
 
 ```
-./server [port number]
+./reference/ref-server [port number]
 ```
 
 We have only tested the binary on the Ugrad systems, and do not guarantee that it
@@ -283,16 +293,67 @@ Or you can pretend to be a sender by sending a `slogin` request:
 ```
 slogin:bob
 join:cafe
-<messages will appear here as ther are sent to the room "cafe">
+<messages will appear here as they are sent to the room "cafe">
 ```
 
 Do not valgrind `netcat` as that will not be testing your program, and may
 generate false positives. Instead you should only valgrind the client excutables
 that you write.
 
-## Part 2: The server
+## Milestone 2: The server
 
 *Coming soon!*
+
+## Reference implementation
+
+In the `reference` directory of the project skeleton, you will find executables
+called `ref-server`, `ref-sender`, and `ref-receiver`. As the names suggest, these
+are the reference implementations of the server, sender, and receiver. Your
+`server`, `sender`, and `receiver` executables should be functionally
+equivalent.
+
+Here is a suggested test scenario.  You will need three terminal sessions.
+
+In terminal number 1, run the server (user input in **bold**):
+
+<div class="highlighter-rouge">
+<pre>
+$ <b>./ref-server 47374</b>
+</pre>
+</div>
+
+You can use any port number 1024 or above instead of 47374.
+
+In terminal number 2, run the receiver (user input in **bold**):
+
+<div class="highlighter-rouge">
+<pre>
+$ <b>./ref-receiver localhost 47374 alice cafe</b>
+</pre>
+</div>
+
+Make sure you use the same port that you used in the `server` command.
+
+In terminal number 3, run the sender (user input in **bold**):
+
+<div class="highlighter-rouge">
+<pre>
+$ <b>./ref-sender localhost 47374 bob</b>
+<b>/join cafe</b>
+<b>hey everybody!</b>
+<b>/quit</b>
+</pre>
+</div>
+
+In terminal number 2 (where the receiver is running, you should see the following output):
+
+```
+bob: hey everybody!
+```
+
+Note that while the `ref-sender` program will terminate when the `/quit` command
+is executed, the `ref-server` and `ref-receiver` programs will need to be
+terminated using Control-C.
 
 ## Submitting
 
