@@ -3,10 +3,6 @@ layout: default
 title: "Assignment 5: Chat Server"
 ---
 
-<div style="text-align: center; font-size: 120%;">
-<i>Note: preliminary assignment description, not official yet!</i>
-</div>
-
 *Note*: Assignment 5 is a double assignment. Each milestone (MS1 and MS2)
 is worth 1/6 of the assignments grade for the course, equal to
 (individually) Assignments 1–4.
@@ -22,7 +18,7 @@ In this assignment, you will develop a chat client program that communicates
 synchronously with a server in real-time. You may think of this as an
 implementation inspired by classical chat systems such as IRC.
 
-You can get started by downloading \<TODO: scaffolding\>.
+You can get started by downloading and unzipping [csf\_assign05.zip](csf_assign05.zip).
 
 **Note:** We highly recommend that you use C++ for this assignment. The server is
 easier to write with abstractions such as scoped locks and classes. It is also
