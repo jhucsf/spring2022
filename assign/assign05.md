@@ -55,7 +55,6 @@ larger class of network-enabled systems:
 * It will use concurrency and synchronization primitives to coordinate access to
     shared data on a remote server
 
-
 ## The Protocol
 
 The client and server communicate by exchanging a series of _messages_ over a
@@ -74,7 +73,9 @@ tag:payload
 
 A _message_ is subject to the following restrictions:
 
-* It must be a single line of text with no newline characters contained within
+* A message must be ended with a sequence of newlines characters. This may be
+    either `"\n"` or `"\r\n`.
+* A message must be a single line of text with no newline characters contained within
     it.
 * A message ends at a newline terminator which can be either `"\n"` or `"\r\n"`.
     Your programs must be able to accept both of these as newline delimiters.
@@ -125,6 +126,40 @@ names we test your programs on:
 
 The reference server implementation will reject operations in which the username
 and/or room name do not meet these criteria.
+
+## Assignment skeleton
+
+We have included a reasonably comprehensive assignment skeleton in the starter
+code to help you factor you design into manageable parts. You are free to change
+any part of the design, up to and including writing your assignment from
+scratch, so long as your program follows all semantics of the reference
+executables. If you elect to change the skeleton code, or the Makefile, ensure
+that you build executables with the sames names as the ones our Makefile builds.
+Do be especially careful if you elect to change our synchronization plans to
+prevent accidentally introducing sync hazards.
+
+Here is a description of some of the files included in the starter code:
+
+* `client_util.{h,cpp}` - contain utility functions that are shared between the
+    send client and receive client.
+* `connection.{h,cpp}` - class describing a client connection. Used by both the
+    receiver and the sender.
+* `csapp.{h,c}` - functions from the CS:APP3e book. You are free to modify
+    functions here as needed, e.g. adding const qualifiers for const
+    correctness, but be careful if you don't completely understand the function
+    you're changing!
+* `guard.h` - RAII style block-scoped lock. Creating the object aquires the
+    lock, destroying the object (i.e. when it goes out of scope) releases the
+    lock.
+* `message.h` - class representing the protocol message format.
+* `receiver.cpp` - contains the main function for the receiver.
+* `room.{cpp,h}` - room class used by the server.
+* `sender.cpp` - contains the main function used by the sender.
+* `server.{cpp,h}` - server class that tracks and aggregates the entire chat
+    server's state. Highly recommended that you follow the sketch presented here.
+* `server_main.cpp` - Contains the main function for the server. If you
+    implement `server.cpp` correctly above, you should not need to make changes
+    to this file.
 
 ## Milestone 1: The clients
 
@@ -234,13 +269,17 @@ You must handle failures to open the TCP communication socket by printing an
 informative error message and exiting with a non-zero exit code. You may assume
 that the server will stay online for the entire duration of the chat session.
 
+If a client to run with the incorrect number of arguments, a descriptive usage
+message should be printed to `stderr` indicating how the program should be invoked.
+
 ### Implementation Tips
 
 You are free to use any functions in the provided `csapp.h` header. In
 particular, we recommend that you use the `rio_*` family of functions for writing
 to the TCP socket file descriptors instead of using the raw syscalls. TCP
 connections have significant latency that requires read to be buffered correctly
-for expected behaviour.
+for expected behaviour. Remember that `rio_readlineb` does not strip the
+newline characters.
 
 To open the client connection to the server, we recommend using the
 `int open_clientfd(char* hostname, char* port)` function. This function accepts
