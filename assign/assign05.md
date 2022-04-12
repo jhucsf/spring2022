@@ -81,8 +81,9 @@ A _message_ is subject to the following restrictions:
     table".
 * The payload is an arbitrary sequence of characters. If a tag has a structured
     payload, the payload must be formatted exactly as specified.
-* If a tag requires an empty payload, the tag/payload seperator character `:`
-    must still be present (e.g. `quit:` not `quit`).
+* If a tag has a payload that is ignored (e.g., the "quit" and "leave" tags),
+  the tag/payload seperator character `:` must still be present (e.g. `quit:` not `quit`),
+  even if the payload is empty
 * An encoded message must not be more than `MAX_LENGTH` bytes.
 
 The first message sent to the server by a client is considered a login message,
@@ -103,18 +104,16 @@ indicating the status of the request.
 
 The following message types are defined:
 
-Tag | Endpoint | Payload content/format | Description 
-----|----------|------------------------|-------------
+Tag | Sent by | Payload content/format | Description 
+----|--------|------------------------|-------------
 err | server | message\_text | client's request was not carried out.
 ok | server | message\_text | client's request ran to completion.
 delivery | server | room:sender:message\_text | a delivery of a received message to a receiver.
-empty | server | [ignored] | Server is indicating that no new messages are available for the given client.
 slogin | sender | username | log in as sender.
 rlogin | receiver | username | log in as receiver.
 join | sender/receiver | room\_name | client wants to join specified room (which will be created as necessary). Client leaves the current room if applicable.
-leave | sender | [ignored] | client wants to leave its current room. If the client is not in a room, the server still returns `ok`.
+leave | sender | [ignored] | the sender sends this command to leave the chat room they are currently in
 sendall | sender | message\_text | send a message to all users in room
-senduser | sender | recipient:message\_text | send message to specified recipient. If the recipient does not exist, the request silently fails and the server still returns `ok`.
 quit | sender | [ignored] | client is done, server will close the connection.
 
 You may have the following assumptions about the usernames and room
