@@ -32,6 +32,11 @@ Please email <daveho@cs.jhu.edu> if you need to get access to Gradescope.
 
 ## News
 
+* **Apr 12** — [Assignment 5](assign/assign05.html) has been posted.
+  There are two milestones. Milestone 1 is due **Wednesday, Apr 20th**,
+  and Milestone 2 is due **Friday, April 29th**.  Note that Assignment 5
+  is a "double" assignment. Each milestone is worth the same as
+  (individually) Assignments 1–4.
 * **Apr 11** — The due date for [Assignment 4](assign/assign04.html) has
   been changed to **Tuesday, Apr 12th**.
 * **Apr 1** — [Assignment 4](assign/assign04.html) is due **Monday, Apr 11th**
