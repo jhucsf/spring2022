@@ -128,15 +128,17 @@ and/or room name do not meet these criteria.
 ## Assignment skeleton
 
 We have included a reasonably comprehensive assignment skeleton in the starter
-code to help you factor you design into manageable parts. You are free to change
+code to help you factor your design into manageable parts. You are free to change
 any part of the design, up to and including writing your assignment from
 scratch, so long as your program follows all semantics of the reference
-executables. If you elect to change the skeleton code, or the Makefile, ensure
+executables.
+
+If you elect to change the skeleton code or the Makefile, ensure
 that you build executables with the sames names as the ones our Makefile builds.
 Do be especially careful if you elect to change our synchronization plans to
 prevent accidentally introducing sync hazards.
 
-Here is a description of some of the files included in the starter code:
+Here is a description of the files included in the starter code:
 
 * `client_util.{h,cpp}` - contain utility functions that are shared between the
     send client and receive client.
