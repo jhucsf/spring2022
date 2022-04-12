@@ -73,8 +73,6 @@ tag:payload
 
 A _message_ is subject to the following restrictions:
 
-* A message must be ended with a sequence of newlines characters. This may be
-    either `"\n"` or `"\r\n`.
 * A message must be a single line of text with no newline characters contained within
     it.
 * A message ends at a newline terminator which can be either `"\n"` or `"\r\n"`.
