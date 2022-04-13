@@ -12,6 +12,8 @@ is worth 1/6 of the assignments grade for the course, equal to
 * Milestone 1 due **Wednesday, Apr 20th** by 11pm
 * Milestone 2 due **Friday, Apr 29th** by 11pm
 
+*Update 4/13*: Adjust weights so that MS1 and MS2 are equal
+
 # Overview
 
 In this assignment, you will develop a chat client program that communicates
@@ -31,13 +33,13 @@ we encourage you to use as the basis for your client and server implementations.
 
 Milestone 1:
 
-* Implementation of sender client: 25%
-* Implementation of receiver client 25%
+* Implementation of sender client: 22.5%
+* Implementation of receiver client 22.5%
 * Design and coding style: 5%
 
 Milesone 2:
 
-* Implementation of server: 25%
+* Implementation of server: 30%
 * Report explaining thread synchronization in server: 15%
 * Design and coding style: 5%
 
