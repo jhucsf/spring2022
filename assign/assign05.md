@@ -337,6 +337,98 @@ Do not valgrind `netcat` as that will not be testing your program, and may
 generate false positives. Instead you should only valgrind the client excutables
 that you write.
 
+#### Automated testing
+
+You can obtain the automated test scripts here:
+
+* [test_receiver.sh](assign05/test_receiver.sh)
+* [test_sender.sh](assign05/test_sender.sh)
+
+You can download them on the in the terminal by using `wget [link]` while you
+are in the same directory your project is in. Don't forget to make them
+executable after downloading them using `chmod u+x [file]`.
+
+`test_receiver.sh` is invoked as follows:
+
+```
+./test_receiver.sh [port] [sender_client] [room] [server_in_file] [output_stem]
+```
+
+and `test_sender.sh` is invoked as follows:
+
+```
+./test_sender.sh [port] [sender_client] [client_in_file] [server_in_file] [output_stem]
+```
+
+Note that `test_sender.sh` exits with the exit code the client exited with, so you
+can verify that you client exited with the correct exit code by running `echo
+$?` **immediately** after running the test script.
+
+The arguments are:
+* `port` - port to run server on. Pick anything above 1024
+* `*_client` - name of the client binary to run. 
+* `room` - room to connect the sender to
+* `server_in_file` - file containing list of messages server should send, one
+    message per line
+* `client_in_file` - file containing list of user inputs to the client, one per line.
+* `output_stem` - base filename for the output, the files
+    `[output_stem]-received.out`, `[output_stem]-client.out`,
+    `[output_stem]-client.err` will be created which correspond to the messages
+    sent by the client to the server, the output the client printed to `stdout`, and the
+    output the client printed to `stderr` respectively.
+
+While we highly encourage you to come up with your own test inputs, we have
+provided the following test inputs for reference:
+
+* [test_receiver_server.in](assign05/test_receiver_server.in)
+* [test_sender_server.in](assign05/test_sender_server.in)
+* [test_sender_client.in](assign05/test_sender_client.in)
+
+You can run the example receiver test using:
+
+```
+./test_receiver.sh 12345 receiver partytime test_receiver_server.in receiver_test
+```
+
+and you should verify that `receiver_test-client.err` is empty, that
+`receiver_test-client.out` contains exactly:
+
+```
+bob: hi alice
+robert_de_bobert: I have the cookies.
+bob: cookies?
+
+```
+
+and that `receiver_test-received` contains exactly:
+
+```
+rlogin:alice
+join:partytime
+
+```
+
+You can run the example sender test using:
+
+```
+./test_sender.sh 12346 sender test_sender_client.in test_sender_server.in sender_test
+```
+
+and you should verify that `sender_test-client.err` is empty, and that
+`sender_test-received` contains exactly:
+
+```
+slogin:alice
+join:partytime
+sendall:Hello World!
+join:cafe
+sendall:get me 1 coffee
+quit:bye
+
+```
+
+With the exception of the payload to `quit` (it can be any text).
+
 ## Milestone 2: The server
 
 *Coming soon!*
