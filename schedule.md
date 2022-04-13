@@ -57,10 +57,10 @@ Apr 8 | Unix I/O, files: [slides](lectures/lecture25-public.pdf) | 10.1–10.11 
 Apr 11 | Networks, Internet Protocol: [slides](lectures/lecture26-public.pdf) | 11.1–11.3 | A4 due
 Apr 13 | Sockets, Application Protocols: [slides](lectures/lecture27-public.pdf), [sockets.zip (example code)](lectures/sockets.zip) | 11.4 | 
 Apr 15 | Network applications, HTTP: [slides](lectures/lecture28-public.pdf), [webserver.zip (example code)](lectures/webserver.zip) | 11.4–11.6 | 
-Apr 18 | Concurrency with processes: [slides](lectures/lecture29-public.pdf), [mp_webserver.zip (example code)](lectures/mp_webserver.zip) | 12.1 | 
-Apr 20 | Concurrency with threads: [slides](lectures/lecture30-public.pdf), [mt_webserver.zip (example code)](lectures/mt_webserver.zip) | 12.3 | <span class='tentative'>A5 due</span>
-Apr 22 | Thread synchronization: [slides](lectures/lecture31-public.pdf), [synch.zip (example code)](lectures/synch.zip) | 12.4–12.5 | 
-Apr 25 | Concurrency with I/O multiplexing: [slides](lectures/lecture32-public.pdf), [iomux.zip (example code)](lectures/iomux.zip) | 12.2 | 
-Apr 27 | Parallelism, concurrency issues: [slides](lectures/lecture33-public.pdf), [synch2.zip (example code)](lectures/synch2.zip) | 12.6–12.7 | 
-Apr 29 | Exam 3 review session |  | <span class='tentative'>A6 due</span>
+Apr 18 | Concurrency with threads: [slides](lectures/lecture30-public.pdf), [mt_webserver.zip (example code)](lectures/mt_webserver.zip) | 12.3 | 
+Apr 20 | Thread synchronization: [slides](lectures/lecture31-public.pdf), [synch.zip (example code)](lectures/synch.zip) | 12.4–12.5 | 
+Apr 22 | Parallelism, concurrency issues: [slides](lectures/lecture33-public.pdf), [synch2.zip (example code)](lectures/synch2.zip) | 12.6–12.7 | A5 MS1 due
+Apr 25 | Concurrency with processes: [slides](lectures/lecture29-public.pdf), [mp_webserver.zip (example code)](lectures/mp_webserver.zip) | 12.1 | 
+Apr 27 | Concurrency with I/O multiplexing: [slides](lectures/lecture32-public.pdf), [iomux.zip (example code)](lectures/iomux.zip) | 12.2 | 
+Apr 29 | Exam 3 review session |  | A5 MS2 due
 May 10 | **Exam 3** (2pm-5pm, location TBD) |  | 

@@ -32,6 +32,9 @@ Please email <daveho@cs.jhu.edu> if you need to get access to Gradescope.
 
 ## News
 
+* **Apr 13** — The [Schedule](schedule.html) has been updated so that
+  threads and thread synchronization are covered in time for
+  Milestone 2 of [Assignment 5](assign/assign05.html).
 * **Apr 12** — [Assignment 5](assign/assign05.html) has been posted.
   There are two milestones. Milestone 1 is due **Wednesday, Apr 20th**,
   and Milestone 2 is due **Friday, April 29th**.  Note that Assignment 5
