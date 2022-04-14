@@ -15,6 +15,23 @@ is worth 1/6 of the assignments grade for the course, equal to
 
 *Update 4/13*: Adjust weights so that MS1 and MS2 are equal
 
+*Update 4/14*: Added [Demo recording](#demo), [Automated testing support](#automated-testing),
+and updated the skeleton project ([csf\_assign05.zip](csf_assign05.zip)) to fix an
+issue with the reference server implementation (`ref-server`).
+If you've already started working on the assignment,
+you can update your reference server by running the following commands
+in your project directory (make sure you've committed and pushed
+all of your work first, just to be safe):
+
+```
+wget https://jhucsf.github.io/spring2022/assign/csf_assign05.zip
+unzip csf_assign05.zip csf_assign05/reference/ref-server
+mv csf_assign05/reference/ref-server reference
+chmod a+x reference/ref-server
+rm csf_assign05.zip
+rm -r csf_assign05
+```
+
 # Overview
 
 In this assignment, you will develop a chat client program that communicates

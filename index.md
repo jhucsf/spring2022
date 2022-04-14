@@ -32,6 +32,12 @@ Please email <daveho@cs.jhu.edu> if you need to get access to Gradescope.
 
 ## News
 
+* **Apr 14** — The description for [Assignment 5](assign/assign05.html) has
+  been updated with [support for automated testing](assign/assign05.html#automated-testing)
+  and a [demo animation](assign/assign05.html#demo) showing the behavior
+  of multiple clients running in real time.  Also, an updated skeleton project
+  [csf\_assign05.zip](assign/csf_assign05.zip) has been updated to fix
+  an issue with the reference server implementation (`ref-server`.)
 * **Apr 13** — The [Schedule](schedule.html) has been updated so that
   threads and thread synchronization are covered in time for
   Milestone 2 of [Assignment 5](assign/assign05.html).
