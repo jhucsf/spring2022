@@ -3,6 +3,7 @@ layout: default
 title: "Assignment 5: Chat Server"
 ---
 
+
 *Note*: Assignment 5 is a double assignment. Each milestone (MS1 and MS2)
 is worth 1/6 of the assignments grade for the course, equal to
 (individually) Assignments 1–4.
@@ -56,6 +57,28 @@ larger class of network-enabled systems:
     connections from clients)
 * It will use concurrency and synchronization primitives to coordinate access to
     shared data on a remote server
+
+## Demo
+
+Here is an example chat session with three different senders and one receiver, all
+connected to the same server:
+
+<!-- Widget loads here -->
+<div id="demo-widget"></div>
+
+(thanks [asciinema](https://asciinema.org/) for the wonderful terminal recording
+widget!)
+
+<!-- Load the Asciinema Widget -->
+<script src="{{site.baseurl}}/js/asciinema-player.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/css/asciinema-player.css">
+<script>
+  AsciinemaPlayer.create('assign05/session.cast', document.getElementById('demo-widget'), {
+  speed: 2,
+  idleTimeLimit: 2,
+  poster: 'npt:0:32'
+  });
+</script>
 
 ## The Protocol
 
