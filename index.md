@@ -32,6 +32,11 @@ Please email <daveho@cs.jhu.edu> if you need to get access to Gradescope.
 
 ## News
 
+* **Apr 16** — The description for [Assignment 5](assign/assign05.html) has
+  been updated to describe how to fix a mistake in the `solution.zip` target
+  in the `Makefile` distributed in the original assignment skeleton.
+  Also, the Milestone 1 autograder is available on
+  [Gradescope](https://www.gradescope.com).
 * **Apr 14** — The description for [Assignment 5](assign/assign05.html) has
   been updated with [support for automated testing](assign/assign05.html#automated-testing)
   and a [demo animation](assign/assign05.html#demo) showing the behavior

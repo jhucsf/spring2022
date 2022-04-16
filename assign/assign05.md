@@ -32,6 +32,19 @@ rm csf_assign05.zip
 rm -r csf_assign05
 ```
 
+*Update 4/16*: There was an error in the `solution.zip` target of the `Makefile`
+in the original project skeleton.  To fix it, change the `zip` command from
+
+```
+zip -9r $@ Makefile *.cpp *.c README.txt
+```
+
+to
+
+```
+zip -9r $@ Makefile *.cpp *.c *.h README.txt
+```
+
 # Overview
 
 In this assignment, you will develop a chat client program that communicates
