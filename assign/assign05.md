@@ -414,7 +414,7 @@ and `test_sender.sh` is invoked as follows:
 ```
 
 Note that `test_sender.sh` exits with the exit code the client exited with, so you
-can verify that you client exited with the correct exit code by running `echo
+can verify that your client exited with the correct exit code by running `echo
 $?` **immediately** after running the test script.
 
 The arguments are:
@@ -529,7 +529,7 @@ the thread. It may also be a good idea to create `User` object in each client
 thread to track the pending messages, and register it to a `Room` when the
 client sends a join request.
 
-You can test that you server handles more than one connection correctly by
+You can test that your server handles more than one connection correctly by
 spawning multiple receivers and senders connecting to the same server, and
 checking that the messages sent from all receivers get correctly delivered to
 all senders.
@@ -672,7 +672,7 @@ once on each mutex before it can be used.
 #### Synchronization report
 
 Since synchronization is an important part of this assignment, we'd like you to
-support a report on you synchronization in your README.txt. Please include where
+support a report on your synchronization in your README.txt. Please include where
 your critical sections are, how you determined them, and why you chose the
 synchronization primitives for each section. You should also explain how your
 critical sections ensure that the synchronization requires are met without
@@ -686,7 +686,7 @@ return code. Once the server binds the port and starts listing for clients, it
 does not need to handle actually shutting down.
 
 We expect your server to be _robust_. This means no matter what any client
-sends, in any order, you server should not crash. Note that to ensure this is
+sends, in any order, your server should not crash. Note that to ensure this is
 the case, you probably will want to use the `rio_*` functions, and the
 `Connection` class you implemented for the clients. Some (non-exhaustive)
 examples of bad things the client may do that _should not_ crash your server
