@@ -197,8 +197,8 @@ Here is a description of the files included in the starter code:
 
 * `client_util.{h,cpp}` - contain utility functions that are shared between the
     send client and receive client.
-* `connection.{h,cpp}` - class describing a client connection. Used by both the
-    receiver and the sender.
+* `connection.{h,cpp}` - class describing a connection between a client and
+    server. Used by both the receiver, the sender, and the server.
 * `csapp.{h,c}` - functions from the CS:APP3e book. You are free to modify
     functions here as needed, e.g. adding const qualifiers for const
     correctness, but be careful if you don't completely understand the function
@@ -484,7 +484,278 @@ With the exception of the payload to `quit` (it can be any text).
 
 ## Milestone 2: The server
 
-*Coming soon!*
+For this part of the assignment, you will be responsible for implementing the
+_server_. The server is responsible for accepting messages from _senders_ and
+broadcasting them to all _receivers_ in the same room.
+
+### Tasks
+
+Your overall tasks are to:
+
+* Create a thread for each client connection. You will need a datastructure to
+    represent the data associated with each client. We recommend that you use the same
+    `Connection` class you used in part 1 to represent these connections. You
+    may use the login message to determine what kind of client is tryiung to
+    connect.
+* Process _control messages_ from clients.
+* Broadcast messages to all receivers in a room when a sender sends a message.
+* Add synchronization for access to share data structures (`Room`s, `Server`) so
+    no messages are lost, even if a receiver leaves or tries to join in the middle of a
+    broadcast. You also must not lose messages that are sent at the same time
+    from two different senders.
+
+### Using threads for client connections
+
+In general, it makes sense for server applications to handle connections from
+multiple clients simultaneously, as servers are typically responsible for
+coordinating data exchanges. Threads are a useful mechanism for handling
+multiple client connections because they allow the code that communicates with
+each client to run concurrently.
+
+In your main server loop (`Server::handle_client_requests()` if you are following
+our scaffolding), you should create a thread for each accepted client
+connection. Use `pthread_create()` to create the client threads. You will
+probably want to create a struct to pass the `Connection` object and other
+required data to the client thread, and user `worker()` as the entrypoint for
+the thread. It may also be a good idea to create `User` object in each client
+thread to track the pending messages, and register it to a `Room` when the
+client sends a join request.
+
+You can test that you server handles more than one connection correctly by
+spawning multiple receivers and senders connecting to the same server, and
+checking that the messages sent from all receivers get correctly delivered to
+all senders.
+
+### Receiver and sender loops
+
+If you are following our skeleton, we recommend that you separate the
+communication loops for the senders and receivers into the `chat_with_sender()`
+and `chat_with_receiver()` functions respectively. Please refer to the flow
+diagrams in Part 1 to determine how you should implement these loops.
+
+We have already handled the `SIGPIPE` signal for you in our provided server main
+function, so you should be able to detect partial reads by matching the return
+value of `rio_*` against the size of the message transmitted. If they do not
+match, you may assume that a transmission error has occurred and handle
+accordingly.
+
+For all synchronous messages, you must ensure that the server always transmits
+some kind of response (`err` for error, `ok` for success) to receive full
+credit. **Important**: You must ensure that you skip sending a message to a
+client with the same username as the sender of a message. For example, if Alice
+sends a message, all receivers logged in as Alice must not receive that
+message.
+
+In the receiver client loop, you must terminate the loop and tear down the client
+thread if any message transmission fails, or if a valid `quit` message is
+received. For the sender client loop, you must terminate the loop and tear down
+the client thread if any message fails to send, as there is no other way to
+detect a client disconnect. Be sure that you clean up any datastructures and
+entries specific to the client before terminating the thread to prevent memory
+leaks.
+
+### Broadcasting messages to receivers
+
+To make synchronization easier, we recommend that you implement the pub/sub
+pattern, using the `MessageQueue` class we outlined for you. In this pattern, a
+sending thread interates through all the `User`s in a room and pushes a message
+into each `MessageQueue`. This event wakes up the receiver thread, allowing it
+to dequeue the messages at its leisure. Here is a diagram of how this could
+work:
+
+![Room broadcast](assign05/a5_room_broadcast.png)
+
+Queues are a useful paradigm here because they allow us to receive messages at
+a different rate than we send them. If we had to wait for all messages to finish
+sending before releasing the lock on the room, we could end up spending all of
+our time servicing send requests, which would bring the server to a standstill.
+
+To implement this "notification" behaviour, we recommend that you use a
+combination of a semaphore and a lock. The lock ensures that the message queue
+can only be modified by one thread at a time, and the semaphore is used to
+"notify" the other end that a new message is available. Recall that a semaphore
+blocks a thread when it goes below zero, and can be incremented (`sem_post`) and
+decremented (`sem_wait`, `sem_timedwait`) from different threads. Thus, we can
+essentially use the semaphore in each `MessageQueue` as a sort of "smart"
+counter of the available messages in the queue. This implements the correct
+behaviour: if there are no messages available, we want the receiver to sleep until
+there are available message, and each time a message is sent, it reduces the
+available messages by one.
+
+The sender client thread may return a response to the sender as soon as the
+message is done being added to all MessageQueues. It does not need to wait until
+the message has actually been delivered to all of the receivers in the room, but
+it should not return a status until the message is done being enqueued.
+
+Note: While we recommend `sem_timedwait()` in the starter code, `sem_wait()` is
+also acceptable for simplicity.  (Using `sem_timedwait()` has the advantage
+that the thread handling a connection with a receiver will not be blocked
+indefinitely if there are no messages waiting to be delivered to that receiver.)
+
+### Synchronizing shared data
+
+Synchronization is typically necessary when multiple threads can attempt to
+access the same data at the same time. Synchronization may also be necessary if
+certain semantics are desired of accessed to shared data (e.g. guaranteed
+ordering).
+
+Strictly speaking, if the data type is _atomic_, read accesses need not be
+synchronized so long as they can provably never occur at the same time as a
+write. However, for this assignment, we are not using _atomic types_, so you
+will need to synchronize _all_ concurrent access.
+
+The section of code where synchronized access to data is implemented is called a
+"critical section", and should be limited in length as concurrency is greatly
+restricted in these sections. Making critical sections too long can potentially
+cripple performance in real-world applications.
+
+Add synchronization to the `Server`, `MessageQueue`, and `Room` objects to
+ensure that updates to these objects will never be lost, not matter how the
+objects are accessed. For example, if multiple clients try connect to the server
+at the same time, both clients must be registered correctly, without losing
+either one. Likewise, if two clients try join a room or send a chat at the
+same time, both requests must be successfully carried out, with neither
+operation "lost" or partially completed.
+
+In a more practical sense, you may want to introduce a mutex to the `Server`,
+`Room` and `MessageQueue` objects, and then add critical section(s) where needed
+to ensure that the synchronization requirements are met. **Very important**: You
+should not allow critical sections to be accessed across object boundaries to
+prevent synchronization bugs. For example, if you implement a mutex in the
+`Room` class, you should make it private and only synchronize to it from `Room`
+methods.
+
+Consider your synchronization hazards carefully! There are a few cases that may
+cause data races that are not immediately obvious (e.g. you must ensure that
+clients never broadcast and join/leave the room at the same time to prevent
+races).
+
+#### Guard locks
+
+To help prevent you from introducing deadlocks, we have provided a "block scoped
+lock" implementing the "Resource Acquisition Is Initialization" (RAII) pattern
+in `guard.h`. This means that constructing the `Guard` object tries to claim the
+lock, and allowing it to go out of scope releases the lock. If you need the lock
+to be held for a shorter scope than the entire enclosing block, you can
+introduce additional scoped blocks:
+
+```
+void foo(pthread_mutex_t *lock) {
+    ...
+    // introduce new block scope
+    {
+        // Aquire lock, blocks thread until lock becomes available
+        Guard(*lock);
+        // do something with the lock held
+        // invariant upheld: only one thread may enter this section at a time.
+        ...
+    }
+    // lock is RELEASED here, and threads will be concurrent
+    ...
+}
+```
+
+We **highly recommend** that you use `Guard` objects instead of raw calls to
+`pthread_mutex_lock()` and `pthread_mutex_unlock()`, as the block scoping
+ensures that you will never forget to release the lock, preventing a vast class
+of possible deadlocks. Remember that `pthread_mutex_init` must be called exactly
+once on each mutex before it can be used.
+
+#### Synchronization report
+
+Since synchronization is an important part of this assignment, we'd like you to
+support a report on you synchronization in your README.txt. Please include where
+your critical sections are, how you determined them, and why you chose the
+synchronization primitives for each section. You should also explain how your
+critical sections ensure that the synchronization requires are met without
+introducing synchronization hazards (e.g. race conditions and deadlocks).
+
+### Error Handling
+
+If the server fails to bind the listen TCP socket for any reason on the host,
+you must print a descriptive error message to `stderr` and return a non-zero
+return code. Once the server binds the port and starts listing for clients, it
+does not need to handle actually shutting down.
+
+We expect your server to be _robust_. This means no matter what any client
+sends, in any order, you server should not crash. Note that to ensure this is
+the case, you probably will want to use the `rio_*` functions, and the
+`Connection` class you implemented for the clients. Some (non-exhaustive)
+examples of bad things the client may do that _should not_ crash your server
+include:
+
+* Sending messages longer than `Message::MAX_LEN`
+* Sending invalid messages that cannot be parsed, including empty messages.
+* Sending messages with invalid tags.
+* Leaving and joining at any point in the communications sequence.
+* Attempting to send a response to a client that has dropped off between the
+    time a message was sent and before it could accept its response.
+
+If a message cannot be parsed, could not be carried out, or is not a valid
+message, you must send an `err` message to the client with a descriptive
+payload. If a sender tries to send a message or leave a room while it is not in
+a room, you must also return `err` with a suitable payload. This _should not_
+stop the server, nor disconnect the client. Otherwise, you _must_ send an `ok`
+message with suitable payload. Failure to send a response to a client operating
+in synchronous mode at any time one is expected is a _severe_ bug that will
+cause most tests to fail.
+
+All client data should be cleaned up as soon as the server detects that the
+client connection has died. You may assume that any transmission error indicates
+that a client has died. It is okay if receivers are not cleaned up until the
+next broadcast is sent to a room for ease of implementation.
+
+Since your server has no way of shutting down, you may ignore the "in-use at
+exit" portion of valgrind. You should still fix any leaks (section marked
+"definitely lost"), and invalid reads, writes, and conditional jumps
+
+### Implementation tips
+
+Start early! There are quite a few things you will need to think through in
+order to create a submission that receives full credit. We recommend that you
+start by implementing the logic that waits for new client connections and spawns
+client threads to handle them. If you are struggling with synchronization, we
+recommend that you reach a basic implementation without them, which might help
+you identify critical sections.
+
+We recommend that you use _detached threads_. This means that you will not have
+to join them back to the primary thread, and that you do not ahve to save the
+`pthread_t`from `pthread_create()`. There are two safe ways to do this.
+This first is to initialize a `pthread_attr_t` struct with the correct flags
+using `pthread_attr_setdetachedstate()`, and pass this into the relevant
+argument for `pthread_create()`. The second is to call
+`pthread_detach(pthread_self())` from the child thread. Under no circumstances
+should you attempt to detach the thread from the creating thread as that risks a
+data race.
+
+Don't forget to initialize your synchronization primitives before use. For
+`pthread_mutex_t`s this is `pthread_mutex_init()`. For semaphores, this is
+`sem_init()`. Use of synchronization primitives before they are initialized is
+undefined behaviour and may not impose synchronization semantics as you expect
+them to be applied. You should also destroy your synchronization primitives when
+you release their associated resources. Failure to call the destruction
+functions may result in leaked memory.
+
+Do not attempt to share stack-allocated data between threads. This is undefined
+behaviour and generally causes the strangest bugs. Instead, ensure that any data
+that must be accessed between threads is part of a heap-allocation.
+
+We also recommend using scope to your advantage. RAII resources such as the
+provided `Guard` type prevent you from making mistakes like forgetting to release
+resources, and defining variables to the narrowest scopes they will function in
+dramatically reduces the potential for subtle bugs to creep their way into your
+program. Aim to fail fast and early on coding mistakes.
+
+If the server appears to become unresponsive for a long period of time it has
+probably deadlocked, and you will need to examine your synchronization. If a
+server doesn't bind a socket on a given port, try another one, as the port you are
+trying to bind may be already taken.
+
+### Testing
+
+Here are some automated tests you can try:
+
+**Coming soon!**
 
 ## Reference implementation
 
