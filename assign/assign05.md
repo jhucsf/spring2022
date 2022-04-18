@@ -488,6 +488,14 @@ For this part of the assignment, you will be responsible for implementing the
 _server_. The server is responsible for accepting messages from _senders_ and
 broadcasting them to all _receivers_ in the same room.
 
+The server will be run in the following manner from the terminal:
+
+```
+./server [port]
+```
+
+where `[port]` specifies the port that the server should listen on.
+
 ### Tasks
 
 Your overall tasks are to:
