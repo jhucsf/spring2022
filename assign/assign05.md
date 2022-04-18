@@ -575,7 +575,9 @@ the message has actually been delivered to all of the receivers in the room, but
 it should not return a status until the message is done being enqueued.
 
 Note: While we recommend `sem_timedwait()` in the starter code, `sem_wait()` is
-also acceptable for simplicity.
+also acceptable for simplicity.  (Using `sem_timedwait()` has the advantage
+that the thread handling a connection with a receiver will not be blocked
+indefinitely if there are no messages waiting to be delivered to that receiver.)
 
 ### Synchronizing shared data
 
@@ -641,7 +643,7 @@ void foo(pthread_mutex_t *lock) {
 ```
 
 We **highly recommend** that you use `Guard` objects instead of raw calls to
-`pthread_mutex_lock()` and `pthread_mutex_unlcok()`, as the block scoping
+`pthread_mutex_lock()` and `pthread_mutex_unlock()`, as the block scoping
 ensures that you will never forget to release the lock, preventing a vast class
 of possible deadlocks. Remember that `pthread_mutex_init` must be called exactly
 once on each mutex before it can be used.
@@ -703,7 +705,7 @@ client threads to handle them. If you are struggling with synchronization, we
 recommend that you reach a basic implementation without them, which might help
 you identify critical sections.
 
-We recommend that you use _detached\_threads_. This means that you will not have
+We recommend that you use _detached threads_. This means that you will not have
 to join them back to the primary thread, and that you do not ahve to save the
 `pthread_t`from `pthread_create()`. There are two safe ways to do this.
 This first is to initialize a `pthread_attr_t` struct with the correct flags
@@ -721,7 +723,7 @@ them to be applied. You should also destroy your synchronization primitives when
 you release their associated resources. Failure to call the destruction
 functions may result in leaked memory.
 
-Do not attempt to share stack allocated data between threads. This is undefined
+Do not attempt to share stack-allocated data between threads. This is undefined
 behaviour and generally causes the strangest bugs. Instead, ensure that any data
 that must be accessed between threads is part of a heap-allocation.
 
