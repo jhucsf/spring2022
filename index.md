@@ -32,6 +32,9 @@ Please email <daveho@cs.jhu.edu> if you need to get access to Gradescope.
 
 ## News
 
+* **Apr 18** — The description for [Assignment 5](assign/assign05.html) has
+  been updated with a description of the functional requirements and
+  suggested approach for Milestone 2.
 * **Apr 16** — The description for [Assignment 5](assign/assign05.html) has
   been updated to describe how to fix a mistake in the `solution.zip` target
   in the `Makefile` distributed in the original assignment skeleton.
