@@ -35,9 +35,6 @@ rm -r csf_assign05
 *Update 4/16*: There was an error in the `solution.zip` target of the `Makefile`
 in the original project skeleton.  To fix it, change the `zip` command from
 
-*Update 4/18*: There was an error in the automated test scripts for the MS1 when
-run on the ugrad machines. You can fix this by re-downloading the scripts.
-
 ```
 zip -9r $@ Makefile *.cpp *.c README.txt
 ```
@@ -47,6 +44,9 @@ to
 ```
 zip -9r $@ Makefile *.cpp *.c *.h README.txt
 ```
+
+*Update 4/18*: There was an error in the automated test scripts for the MS1 when
+run on the ugrad machines. You can fix this by re-downloading the scripts.
 
 # Overview
 
@@ -380,7 +380,7 @@ nc -l -p <port>
 ```
 
 where port is a number greater than 1024. You would then type in the server
-responses yourself in the netcat terminal window after you et a client connected
+responses yourself in the netcat terminal window after you get a client connected
 to the "server" following the sequence diagrams above.
 
 You can then pretend to be a receiver by sending a `rlogin` request:
