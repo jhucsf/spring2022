@@ -278,7 +278,7 @@ this only covers the "happy case"):
 
 The following messages must be handled:
 
-* `rlogin`
+* slogin`
 * `join`
 * `sendall`
 * `leave`
@@ -372,6 +372,16 @@ You can also test one client at a time by using netcat as follows:
 ```
 nc localhost [portnumber]
 ```
+
+You can also spawn a netcat "server" using the following commands:
+
+```
+nc -l -p <port>
+```
+
+where port is a number greater than 1024. You would then type in the server
+responses yourself in the netcat terminal window after you et a client connected
+to the "server" following the sequence diagrams above.
 
 You can then pretend to be a receiver by sending a `rlogin` request:
 
