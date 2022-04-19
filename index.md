@@ -32,6 +32,8 @@ Please email <daveho@cs.jhu.edu> if you need to get access to Gradescope.
 
 ## News
 
+* **Apr 19** — The deadline for Milestone 1 of [Assignment 5](assign/assign05.html)
+  has been extended by one day to **Thursday, Apr 21st**.
 * **Apr 18** — The description for [Assignment 5](assign/assign05.html) has
   been updated with a description of the functional requirements and
   suggested approach for Milestone 2.
