@@ -20,7 +20,7 @@ fi
 # force line-by-line buffering so output can be collected even after the
 # the process is killed
 stdbuf -oL \
-    netcat -l -p ${PORT} localhost \
+    nc -l -p ${PORT} localhost \
         < ${SERVER_INPUT} \
         > ${OUTPUT_STEM}-recieved.out &
 NETCAT_PID=$!
