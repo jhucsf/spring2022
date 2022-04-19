@@ -10,7 +10,7 @@ is worth 1/6 of the assignments grade for the course, equal to
 
 **Due:**
 
-* Milestone 1 due **Wednesday, Apr 20th** by 11pm
+* Milestone 1 due <strike>Wednesday, Apr 20th</strike>**Thursday, Apr 21st** by 11pm
 * Milestone 2 due **Friday, Apr 29th** by 11pm
 
 *Update 4/13*: Adjust weights so that MS1 and MS2 are equal
