@@ -25,25 +25,12 @@ Review materials for Exam 2:
 * [Final exam, Spring 2020](resources/final-spring2020.pdf) (Questions 1–3), [Solution](resources/final-spring2020-soln.pdf)
 * [Exam 2, Fall 2021](resources/exam02-fall2021.pdf), [Solution](resources/exam02-fall2021-soln.pdf)
 
-<!--
 Review materials for Exam 3:
 
 * [Exam 3 practice questions](resources/exam3review.html), [Solutions](resources/exam3review-solutions.html)
 * [Final exam, Fall 2019](resources/final-fall2019.pdf) (Quesetions 4–5), [Solution](resources/final-fall2019-soln.pdf)
 * [Final exam, Spring 2020](resources/final-spring2020.pdf) (Questions 4–5), [Solution](resources/final-spring2020-soln.pdf)
-
-* [Exam 1 practice questions](resources/exam1review.html), [Answers](resources/exam1review-solutions.html)
-* [Assembly language mini-exercises](resources/assemblyMini.html)
-* [Assembly language exercise](resources/assembly.html), [solution](resources/asmExerciseSoln.zip)
-* [Assembly language exercise 2 (more challenging)](resources/assembly2.html)
-* [Zipfile for in-class assembly language exercise](resources/assembly_exercise.zip)
-* [Exam 2 practice questions](resources/exam2review.html), [Answers](resources/exam2review-solutions.html)
-* [Exam 3 practice questions](resources/exam3review.html), [Answers](resources/exam3review-solutions.html)
-* [Final, Spring 2020](resources/final-spring2020.pdf), [Solution](resources/final-spring2020-soln.pdf)
-* [Final, Fall 2019](resources/final-fall2019.pdf), [Solution](resources/final-fall2019-soln.pdf)
-* [Exam 4 practice questions](resources/exam4review.html), [Answers](resources/exam4review-solutions.html)
-* [Exam 4, Fall 2020](resources/exam04-fall2020.pdf), [Solution](resources/exam04-fall2020-solution.pdf)
--->
+* [Exam 3, Fall 2021](resources/exam03-fall2021.pdf), [Solution](resources/exam03-fall2021-soln.pdf)
 
 ## x86-64 assembly language exercises
 
