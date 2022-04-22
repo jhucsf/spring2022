@@ -372,7 +372,7 @@ In Unix and Linux, standard input is file descriptor 0.
 
 The GNU assembler allows you to define "local" labels, which start
 with the prefix `.L`.  You should use these for control flow targets
-within a function.  For example (from the [echoInput.S](hw2/echoInput.S)
+within a function.  For example (from the [echoInput.S](assign02/echoInput.S)
 example program):
 
 ```
