@@ -32,6 +32,9 @@ Please email <daveho@cs.jhu.edu> if you need to get access to Gradescope.
 
 ## News
 
+* **Apr 22** — A [screencast](https://jh.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=3d9460a0-eca0-487b-8609-ae7f01050601) is available demonstrating
+  several manual testing scenarios involving the reference server,
+  your clients, your server, and/or netcat.
 * **Apr 22** — Exam 3 will take place at 2pm on Tuesday, May 10th (location TBD.)
   Review materials are available on the [Resources](resources.html) page.
 * **Apr 19** — The deadline for Milestone 1 of [Assignment 5](assign/assign05.html)

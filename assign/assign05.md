@@ -48,6 +48,10 @@ zip -9r $@ Makefile *.cpp *.c *.h README.txt
 *Update 4/18*: There was an error in the automated test scripts for the MS1 when
 run on the ugrad machines. You can fix this by re-downloading the scripts.
 
+*Update 4/22*: We have provided a screencast which demonstrates various
+manual testing scenarios using the reference server, your clients,
+your server, and/or netcat. See the (end of the) [Testing](#testing) section.
+
 # Overview
 
 In this assignment, you will develop a chat client program that communicates
@@ -402,6 +406,12 @@ join:cafe
 Do not valgrind `netcat` as that will not be testing your program, and may
 generate false positives. Instead you should only valgrind the client excutables
 that you write.
+
+We have recorded a screencast which demonstrates several testing scenarios
+using combinations of the reference server, your clients, your server,
+and netcat:
+
+> <https://jh.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=3d9460a0-eca0-487b-8609-ae7f01050601>
 
 #### Automated testing
 
