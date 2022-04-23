@@ -75,7 +75,7 @@ Milestone 1:
 * Implementation of receiver client 22.5%
 * Design and coding style: 5%
 
-Milesone 2:
+Milestone 2:
 
 * Implementation of server: 30%
 * Report explaining thread synchronization in server: 15%
@@ -144,7 +144,7 @@ A _message_ is subject to the following restrictions:
 * The payload is an arbitrary sequence of characters. If a tag has a structured
     payload, the payload must be formatted exactly as specified.
 * If a tag has a payload that is ignored (e.g., the "quit" and "leave" tags),
-  the tag/payload seperator character `:` must still be present (e.g. `quit:` not `quit`),
+  the tag/payload separator character `:` must still be present (e.g. `quit:` not `quit`),
   even if the payload is empty
 * An encoded message must not be more than `MAX_LENGTH` bytes.
 
@@ -210,7 +210,7 @@ Here is a description of the files included in the starter code:
     functions here as needed, e.g. adding const qualifiers for const
     correctness, but be careful if you don't completely understand the function
     you're changing!
-* `guard.h` - RAII style block-scoped lock. Creating the object aquires the
+* `guard.h` - RAII style block-scoped lock. Creating the object acquires the
     lock, destroying the object (i.e. when it goes out of scope) releases the
     lock.
 * `message.h` - class representing the protocol message format.
@@ -282,7 +282,7 @@ this only covers the "happy case"):
 
 The following messages must be handled:
 
-* slogin`
+* `slogin`
 * `join`
 * `sendall`
 * `leave`
@@ -404,7 +404,7 @@ join:cafe
 ```
 
 Do not valgrind `netcat` as that will not be testing your program, and may
-generate false positives. Instead you should only valgrind the client excutables
+generate false positives. Instead you should only valgrind the client executables
 that you write.
 
 We have recorded a screencast which demonstrates several testing scenarios
@@ -412,6 +412,18 @@ using combinations of the reference server, your clients, your server,
 and netcat:
 
 > <https://jh.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=3d9460a0-eca0-487b-8609-ae7f01050601>
+
+We also have a recording of a terminal session where we demo some of these
+manual testing workflows:
+
+<div id="client-test-widget"></div>
+<script>
+  AsciinemaPlayer.create('assign05/client_test.cast', document.getElementById('client-test-widget'), {
+  speed: 2.5,
+  idleTimeLimit: 2,
+  poster: 'npt:0:32'
+  });
+</script>
 
 #### Automated testing
 
@@ -526,7 +538,7 @@ Your overall tasks are to:
 * Create a thread for each client connection. You will need a datastructure to
     represent the data associated with each client. We recommend that you use the same
     `Connection` class you used in part 1 to represent these connections. You
-    may use the login message to determine what kind of client is tryiung to
+    may use the login message to determine what kind of client is trying to
     connect.
 * Process _control messages_ from clients.
 * Broadcast messages to all receivers in a room when a sender sends a message.
@@ -547,15 +559,14 @@ In your main server loop (`Server::handle_client_requests()` if you are followin
 our scaffolding), you should create a thread for each accepted client
 connection. Use `pthread_create()` to create the client threads. You will
 probably want to create a struct to pass the `Connection` object and other
-required data to the client thread, and user `worker()` as the entrypoint for
+required data to the client thread, and use `worker()` as the entrypoint for
 the thread. It may also be a good idea to create `User` object in each client
 thread to track the pending messages, and register it to a `Room` when the
 client sends a join request.
 
 You can test that your server handles more than one connection correctly by
-spawning multiple receivers and senders connecting to the same server, and
-checking that the messages sent from all receivers get correctly delivered to
-all senders.
+spawning multiple receivers and senders on the same server, and checking that
+the messages sent from all senders get correctly delivered to all receivers.
 
 ### Receiver and sender loops
 
@@ -589,7 +600,7 @@ leaks.
 
 To make synchronization easier, we recommend that you implement the pub/sub
 pattern, using the `MessageQueue` class we outlined for you. In this pattern, a
-sending thread interates through all the `User`s in a room and pushes a message
+sending thread iterates through all the `User`s in a room and pushes a message
 into each `MessageQueue`. This event wakes up the receiver thread, allowing it
 to dequeue the messages at its leisure. Here is a diagram of how this could
 work:
@@ -610,7 +621,7 @@ decremented (`sem_wait`, `sem_timedwait`) from different threads. Thus, we can
 essentially use the semaphore in each `MessageQueue` as a sort of "smart"
 counter of the available messages in the queue. This implements the correct
 behaviour: if there are no messages available, we want the receiver to sleep until
-there are available message, and each time a message is sent, it reduces the
+there are available messages, and each time a message is sent, it reduces the
 available messages by one.
 
 The sender client thread may return a response to the sender as soon as the
@@ -631,7 +642,7 @@ certain semantics are desired of accessed to shared data (e.g. guaranteed
 ordering).
 
 Strictly speaking, if the data type is _atomic_, read accesses need not be
-synchronized so long as they can provably never occur at the same time as a
+synchronized so long as they can probably never occur at the same time as a
 write. However, for this assignment, we are not using _atomic types_, so you
 will need to synchronize _all_ concurrent access.
 
@@ -705,7 +716,7 @@ introducing synchronization hazards (e.g. race conditions and deadlocks).
 
 If the server fails to bind the listen TCP socket for any reason on the host,
 you must print a descriptive error message to `stderr` and return a non-zero
-return code. Once the server binds the port and starts listing for clients, it
+return code. Once the server binds the port and starts listening for clients, it
 does not need to handle actually shutting down.
 
 We expect your server to be _robust_. This means no matter what any client
@@ -750,7 +761,7 @@ recommend that you reach a basic implementation without them, which might help
 you identify critical sections.
 
 We recommend that you use _detached threads_. This means that you will not have
-to join them back to the primary thread, and that you do not ahve to save the
+to join them back to the primary thread, and that you do not have to save the
 `pthread_t`from `pthread_create()`. There are two safe ways to do this.
 This first is to initialize a `pthread_attr_t` struct with the correct flags
 using `pthread_attr_setdetachedstate()`, and pass this into the relevant
@@ -783,6 +794,42 @@ server doesn't bind a socket on a given port, try another one, as the port you a
 trying to bind may be already taken.
 
 ### Testing
+
+We have provided the testing methods below to help you ensure that your program
+is working correctly. _We highly recommend against using the autograder as your
+primary testing solution_. The autograder is designed to be robust and thorough,
+and intentionally does not provides test feedback to you. Instead, we recommend
+that you use local testing techniques so you can use tools like debuggers and
+print statements to help debug.
+
+### Manual Testing
+
+To test this program, you may follow the instructions in the [MS1
+Testing](#testing) section, replacing the invocations of your client with
+`reference/ref-[client]`. Netcat testing will probably also be a good idea so
+you can figure out exactly what your server is sending.
+
+For example, to test a server implementation against netcat, you could open
+three terminal windows. In the first, you would run `./server [port]`, in the
+second you would run `nc localhost [port]` and send a `rlogin` message, in the
+third you would run `nc localhost [port]` and send a `slogin` message. Then you
+would follow the flow diagrams to send messages from your netcat "clients",
+verifying the server responses that appear. If everything works in manual netcat
+testing, you would move onto testing with our reference binaries using a similar
+approach, before trying the automated test scripts posted below.
+
+Here is a capture of an example testing session:
+
+<div id="server-test-widget"></div>
+<script>
+  AsciinemaPlayer.create('assign05/server_test.cast', document.getElementById('server-test-widget'), {
+  speed: 2.5,
+  idleTimeLimit: 2,
+  poster: 'npt:0:32'
+  });
+</script>
+
+## Automated Testing
 
 Here are some automated tests you can try:
 
