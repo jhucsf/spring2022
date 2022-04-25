@@ -55,6 +55,8 @@ your server, and/or netcat. See the (end of the) [Testing](#testing) section.
 
 *Update 4/25*: You may submit MS2 by Monday, May 2nd without penalty.
 
+*Update 4/25*: We have added automated testing instruction for the server.
+
 # Overview
 
 In this assignment, you will develop a chat client program that communicates
@@ -264,7 +266,7 @@ The following messages must be handled:
 * `err`
 
 If the server returns `err` for either the `rlogin` or `join` message, the
-receiver must print the payload to `stderr`/`cerr` and exit with a
+receiver must print the error payload to `stderr`/`cerr` and exit with a
 non-zero exit code. The receiver does not need to exit cleanly, we expect it to
 terminate it by sending it a `SIGINT` (a.k.a. `<ctrl>+c`).
 
@@ -310,9 +312,9 @@ recognized command.
 The client must listen for a response from the server after sending each message
 (synchronous protocol). It is okay to stop reading user input during this time.
 If the server returns `err` for the `slogin` request, the sender should print
-the payload to `stderr`/`cerr` and exit with a non-zero exit code. If the
-server returns `err` for any other request, the sender should print the payload
-to `stderr`/`cerr` and continue processing user input.
+the error payload to `stderr`/`cerr` and exit with a non-zero exit code. If the
+server returns `err` for any other request, the sender should print the error
+payload to `stderr`/`cerr` and continue processing user input.
 
 If the `quit` commend is issued, the sender must wait for a reply from the
 server before exiting with exit code 0.
@@ -836,9 +838,112 @@ Here is a capture of an example testing session:
 
 Here are some automated tests you can try:
 
-**Coming soon!**
+* [test_sequential.sh](assign05/test_sequential.sh)
+* [test_interleaved.sh](assign05/test_interleaved.sh)
+* [test_concurrent.sh](assign05/test_concurrent.sh)
 
-## Reference implementation
+Don't forget to make these scripts executable using `chmod u+x [script name]`!
+
+`test_sequential.sh` runs two senders, one after the other, and is invoked
+using:
+
+```
+./test_sequential.sh [port] [first_sender_input_file] [second_sender_input_file]
+[output_stem]
+```
+
+`test_interleaved.sh` runs two senders, alternating between them for each line
+of the input file. I can be invoked as follows:
+
+```
+./test_interleaved.sh [port] [unified input file] [output_stem]
+```
+
+`test_concurrent.sh` does its best to break your server's synchronization by
+spawning all sorts of clients that try send data as fast as possible while
+simultaneously switching rooms and disconnecting. It can be invoked as follows:
+
+```
+./test_concurrent.sh [port] [iterations] [settling time]
+```
+
+`[output_stem]` will set the file that contains the receiver output after each
+run. `[output_stem].out` contains the output of the receiver, and
+`[output_stem].err` contains the receiver errors. For the sequential and
+concurrent tests, we always expect the first user to be `bob` and the second
+user to be `alice`, and errors for their respective senders will be found in
+`[user].err`. Please keep this in mind as you write additional tests.
+
+While we highly recommend you write your own test cases, we have provided the
+following tests inputs as examples:
+
+* [test_inter.in](assign05/test_inter.in)
+* [seq_send_1.in](assign05/seq_send_1.in)
+* [seq_send_2.in](assign05/seq_send_2.in)
+
+You can run the reference sequential test using the following command:
+
+```
+./test_sequential.sh [port] seq_send_1.in seq_send_2.in seq_recv
+```
+
+and you should get nothing in `seq_recv.err`, `bob.err`, `alice.err`, and the
+following output in `seq_recv.out`:
+
+```
+alice: Hello everyone
+alice: I am trying to purchase the cookies
+alice: Please give me your headcount and the number of cookies you want
+bob: Hi Alice
+bob: This is Bob.
+bob: I want a chocolate peanut cookie with walnuts.
+bob: Thanks!
+
+```
+
+and you should ensure that your server does not print anything to `stdout`.
+
+You can run the reference interleaved test using the following command:
+
+```
+./test_interleaved.sh [port] test_inter.in inter_recv
+```
+and you should get nothing in `inter_recv.err`, `bob.err`, `alice.err`, and the
+following output in `inter_recv.out`:
+
+```
+alice: This is a message from alice
+bob: And this is a message from bob
+alice: each alternating line of messages...
+bob: will be send by a different client...
+alice: this test ensures that clients are served in order
+bob: and that one client may not monopolize the entire transmission
+
+```
+
+and you should ensure that the server does not print anything to stdout.
+
+Some good parameters to start the concurrency test with are 10000 iterations and
+30 seconds of settling time. If the test succeeds, you should see `Tests passed
+successfully!`. Increasing the number of iterations will increase the likelihood
+of detecting a race condition. If the test ends with `Failed to verify*` try
+increasing the settling time, but if increasing the settling time to over one
+minute does not allow the test to pass, you probably have a race. However, do
+note that having this test pass does not guarantee that your code is sync-safe.
+
+You should run the concurrency test _last_, after you get all other
+functionality working. The concurrency test will exercise all parts of your
+server while it tries to cause race conditions.
+
+Note that the server can be run under valgrind by setting the `VALGRIND_ENABLE`
+environment variable to `1`. For example, if you want to run the sequential test
+with valgrind, the command would be run using `VALGRIND_ENABLE=1
+./test_sequential.sh ...`. You may ignore the reports for "indirectly lost",
+"possibly lost", and "in use at exit", and ignore leaks caused by `pthread_*`
+functions. You should definitely fix invalid reads, writes, or conditional jumps
+that are reported by valgrind.
+
+## Reference 
 
 In the `reference` directory of the project skeleton, you will find executables
 called `ref-server`, `ref-sender`, and `ref-receiver`. As the names suggest, these
