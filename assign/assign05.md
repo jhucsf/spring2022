@@ -11,7 +11,8 @@ is worth 1/6 of the assignments grade for the course, equal to
 **Due:**
 
 * Milestone 1 due <strike>Wednesday, Apr 20th</strike>**Thursday, Apr 21st** by 11pm
-* Milestone 2 due **Friday, Apr 29th** by 11pm
+* Milestone 2 due **Friday, Apr 29th** by 11pm (you may submit by 11pm on **Monday, May 2nd**
+  without penalty, but submissions beyond this point will not be accepted!)
 
 *Update 4/13*: Adjust weights so that MS1 and MS2 are equal
 
@@ -51,6 +52,8 @@ run on the ugrad machines. You can fix this by re-downloading the scripts.
 *Update 4/22*: We have provided a screencast which demonstrates various
 manual testing scenarios using the reference server, your clients,
 your server, and/or netcat. See the (end of the) [Testing](#testing) section.
+
+*Update 4/25*: You may submit MS2 by Monday, May 2nd without penalty.
 
 # Overview
 

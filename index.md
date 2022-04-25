@@ -32,6 +32,10 @@ Please email <daveho@cs.jhu.edu> if you need to get access to Gradescope.
 
 ## News
 
+* **Apr 25** — [Assignment 5](assign/assign05.html) has been updated to
+  indicate that you may submit Milestone 2 by 11pm on **Monday, May 2nd**
+  without penalty. Note that this is a firm deadline, and submissions
+  beyond this point will not be accepted.
 * **Apr 22** — A [screencast](https://jh.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=3d9460a0-eca0-487b-8609-ae7f01050601) is available demonstrating
   several manual testing scenarios involving the reference server,
   your clients, your server, and/or netcat.
