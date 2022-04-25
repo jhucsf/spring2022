@@ -63,4 +63,4 @@ Apr 22 | Parallelism, concurrency issues: [slides](lectures/lecture33-public.pdf
 Apr 25 | Concurrency with processes: [slides](lectures/lecture29-public.pdf), [mp_webserver.zip (example code)](lectures/mp_webserver.zip) | 12.1 | 
 Apr 27 | Concurrency with I/O multiplexing: [slides](lectures/lecture32-public.pdf), [iomux.zip (example code)](lectures/iomux.zip) | 12.2 | 
 Apr 29 | Exam 3 review session |  | A5 MS2 due
-May 10 | **Exam 3** (2pm-5pm, location TBD) |  | 
+May 10 | **Exam 3**, 2pm in Mergenthaler 111 |  | 
