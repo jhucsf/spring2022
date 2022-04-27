@@ -32,6 +32,11 @@ Please email <daveho@cs.jhu.edu> if you need to get access to Gradescope.
 
 ## News
 
+* **Apr 27** — [Assignment 5](assign/assign05.html) has been updated with
+  a link to a partial implementation of `server.cpp`
+  ([server\_skel.cpp](assign/assign05/server_skel.cpp).) It demonstrates an
+  approach for accepting connections, starting client threads, and
+  communicating with clients.
 * **Apr 25** — Exam 3 will take place at 2pm on Tuesday, May 10th in
   **Mergenthaler 111**.
 * **Apr 25** — [Assignment 5](assign/assign05.html) has been updated to

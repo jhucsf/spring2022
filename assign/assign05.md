@@ -57,6 +57,12 @@ your server, and/or netcat. See the (end of the) [Testing](#testing) section.
 
 *Update 4/25*: We have added automated testing instruction for the server.
 
+*Update 4/27*: [server\_skel.cpp](assign05/server_skel.cpp) is a partially-implemented
+`server.cpp` that demonstrates an approach to accepting connections, starting client
+threads, and using a `Connection` to communicate with the client.
+See the [Partial `server.cpp` implementation](#partial-servercpp-implementation)
+section.
+
 # Overview
 
 In this assignment, you will develop a chat client program that communicates
@@ -755,6 +761,42 @@ next broadcast is sent to a room for ease of implementation.
 Since your server has no way of shutting down, you may ignore the "in-use at
 exit" portion of valgrind. You should still fix any leaks (section marked
 "definitely lost"), and invalid reads, writes, and conditional jumps
+
+### Partial `server.cpp` implementation
+
+You can use the following partially-implemented `server.cpp` as a starting
+point: [server\_skel.cpp](assign05/server_skel.cpp). It demonstrates an
+approach to accepting client connections, starting client threads, and
+communicating with the client. Note that it does not implement the details
+of the protocol that the server should use to communicate with receivers
+and senders.
+
+Assuming that your `Connection` class is fully implemented, if you build
+the `server` implementation using this partial implementation, you should
+be able to run and test your server, and use netcat as a client to connect
+to it.
+
+For example, start the server in one terminal using the command
+`./server 33333`. (You can substitute a different port number.)
+
+Then, run `nc` in a different terminal. Here is an example session
+(user input shown in **bold**):
+
+<div class="highlighter-rouge"><pre>
+$ nc localhost 33333
+<b>slogin:alice</b>
+ok:welcome alice
+<b>join:partytime</b>
+ok:this is just a dummy response
+<b>sendall:Hello world!</b>
+ok:this is just a dummy response
+<b>quit:quit</b>
+ok:this is just a dummy response
+<b>^C</b>
+</pre></div>
+
+Note that the server does not actually process the `quit` message,
+so you will need to terminate the connection using control-C.
 
 ### Implementation tips
 
