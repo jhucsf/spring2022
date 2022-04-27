@@ -12,7 +12,12 @@ is worth 1/6 of the assignments grade for the course, equal to
 
 * Milestone 1 due <strike>Wednesday, Apr 20th</strike>**Thursday, Apr 21st** by 11pm
 * Milestone 2 due **Friday, Apr 29th** by 11pm (you may submit by 11pm on **Monday, May 2nd**
-  without penalty, but submissions beyond this point will not be accepted!)
+  without penalty<strike>, but submissions beyond this point will not be accepted!</strike>):
+  you may use late hours on Milestone 2, but
+  1. they are counted from the nominal due date of Friday 4/29, so you need at least
+     72 late hours remaining to submit later than 11pm on Monday 5/2, and
+  2. You must explicitly request to use your late hours this way
+     (email <mailto:daveho@cs.jhu.edu> if you are interested)
 
 *Update 4/13*: Adjust weights so that MS1 and MS2 are equal
 
