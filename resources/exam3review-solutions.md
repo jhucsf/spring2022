@@ -131,6 +131,7 @@ void chat_with_client(int client_fd) {
         reverse_string(buf);
         Rio_writen(client_fd, buf, strlen(buf));
       }
+    }
   }
 
   close(client_fd);
